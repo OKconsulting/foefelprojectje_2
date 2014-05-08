@@ -13,6 +13,7 @@
   <access origin="*" />
   <preference name="phonegap-version" value="3.3.0" />
   <preference name="orientation" value="portrait" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <gap:plugin name="org.apache.cordova.geolocation" />
   <gap:plugin name="com.phonegap.plugin.statusbar" />
 </widget>
