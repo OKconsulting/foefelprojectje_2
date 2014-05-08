@@ -2,7 +2,7 @@
 <widget id="com.okc.time.e-ok" version="1.0.0" xmlns:gap="http://phonegap.com/ns/1.0" xmlns="http://www.w3.org/ns/widgets">
   <name>Time.e-ok</name>
   <description>
-    Time.e-ok is nu beschikbaar op uw toestel! Met de applicatie kan je je werktijden loggen en raadplegen net zoals op de website www.time.e-ok.be!
+    Time.e-ok is nu beschikbaar op uw toestel! Met de applicatie kan je de werktijden loggen en raadplegen net zoals op de website www.time.e-ok.be!
   </description>
   <icon src="logo.png" />
   <icon src="/icons/android/icon-hdpi.png" gap:density="hdpi" gap:platform="android" />
