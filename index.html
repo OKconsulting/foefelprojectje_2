@@ -1,0 +1,88 @@
+﻿<html class="ui-mobile">
+<head>
+    <!--http://themeroller.jquerymobile.com/?ver=1.4.2&style_id=20140324-11-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Multi-page template</title>
+    <link rel="stylesheet" href="./themes/reset.css" />
+    <link rel="stylesheet" href="./themes/tijdsregistratie.css" />
+    <link rel="stylesheet" href="./themes/style.css" />
+    <link rel="stylesheet" href="./themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="./themes/jquery.mobile.structure-1.4.2.min.css" />
+    <script src="./scripts/jquery-1.10.2.min.js"></script>
+    <script src="./scripts/jquery.mobile-1.4.2.min.js"></script>
+
+</head>
+
+<body class="ui-mobile-viewport ui-overlay-c">
+
+    <div data-role="page" id="login" data-theme="a">
+        <div role="main" class="ui-content">
+            <div class="melding">
+            </div>
+            <div id="containerLogin">
+                <input type="email" id="LoginInput" placeholder="Login" />
+                <input type="password" id="PaswoordInput" placeholder="Paswoord" />
+                <input type="button" value="Inloggen" onclick="login()" />
+            </div>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <img src="images/logo-okc.png" />
+        </div>
+    </div>
+    <script src="scripts/database-connection.js"></script>
+    <script>
+        $(document).ready(function () {
+            var mdwID = window.localStorage.getItem("mdwID");
+            
+            if (mdwID != null) {
+                window.localStorage.setItem("mdwID", mdwID);
+                window.location.href = "./home.html#home";
+            }
+        });
+
+        $('#LoginInput, #PaswoordInput').focus(function () {
+            $('[data-role=footer]').css("display", "none");
+        });
+
+        $('#LoginInput, #PaswoordInput').blur(function () {
+            $('[data-role=footer]').css("display", "block");
+        });
+
+        var timeout;
+        function melding(bericht) {
+            $('.melding').text(bericht);
+            $('.melding').fadeIn();
+            window.clearTimeout(timeout);
+            timeout = setTimeout(function () { $('.melding').fadeOut(); }, 3000);
+        }
+
+        function login() {
+            var user = { UserName: $("#LoginInput").val(), Paswoord: $("#PaswoordInput").val(), MedewerkerID: 0, Role: "" };
+
+            $.ajax({
+                url: url + 'api/user/login',
+                type: 'POST',
+                async: false,
+                contentType: 'application/json',
+                data: JSON.stringify(user),
+                success: function (data) {
+                    window.localStorage.setItem("mdwID", data.MedewerkerID);
+                    window.location.href = "./home.html#home";
+                },
+                error: function (e) {
+                    console.log(e);
+                    if (e.responseJSON == "login") {
+                        melding("Deze login heeft geen toegang tot de applicatie.");
+                    } else if (e.responseJSON == "wachtwoord") {
+                        melding("U heeft een verkeerd wachtwoord ingevoerd.");
+                    } else {
+                        melding("U heeft geen internet connectie.");
+                    }
+                },
+                dataType: 'json',
+                contentType: "application/json"
+            });
+        }
+    </script>
+</body>
+</html>

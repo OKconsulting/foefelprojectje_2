@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="com.okc.time.e-ok" version="1.0.0" xmlns:gap="http://phonegap.com/ns/1.0" xmlns="http://www.w3.org/ns/widgets">
+  <name>Time.e-ok</name>
+  <description>
+    Time.e-ok is nu beschikbaar op uw toestel! Met de applicatie kan je je werktijden loggen en raadplegen net zoals op de website www.time.e-ok.be!
+  </description>
+  <icon src="logo.png" />
+  <icon src="/icons/android/icon-hdpi.png" gap:density="hdpi" gap:platform="android" />
+  <icon src="/icons/android/icon-ldpi.png" gap:density="ldpi" gap:platform="android" />
+  <icon src="/icons/android/icon-mdpi.png" gap:density="mdpi" gap:platform="android" />
+  <icon src="/icons/android/icon-xhdpi.png" gap:density="xhdpi" gap:platform="android" />
+  <author email="nicolanauwynck@hotmail.com">nicolanauwynck@hotmail.com</author>
+  <access origin="*" />
+  <preference name="phonegap-version" value="3.3.0" />
+  <preference name="orientation" value="portrait" />
+  <gap:plugin name="org.apache.cordova.geolocation" />
+  <gap:plugin name="com.phonegap.plugin.statusbar" />
+</widget>

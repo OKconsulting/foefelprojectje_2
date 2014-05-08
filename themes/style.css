@@ -1,0 +1,283 @@
+﻿html, body {
+    width: 100%;
+    position: relative;
+}
+
+h1 a {
+    color: white !important;
+    text-decoration: none;
+}
+
+b {
+    font-weight: bold;
+}
+
+.ui-datepicker-calendar {
+    display: none;
+}
+
+.ui-footer {
+    text-align: center;
+}
+
+.ui-content {
+    padding: 12px !important;
+}
+
+.clear-fix {
+    clear: both;
+}
+
+.header {
+    padding: 13px 0px 11px 0px !important;
+    border-bottom: 3px #007369 solid !important;
+    max-height: 52px;
+}
+
+    .header h1 {
+        padding-top: 1px;
+    }
+
+    .header .left {
+        float: left;
+        width: 100px;
+    }
+
+        .header .left a {
+            color: white;
+            margin-left: 12px;
+            width: 32px;
+            display: inline-block;
+            text-align: left;
+            float: left;
+        }
+
+            .header .left a img {
+                height: 22px;
+            }
+
+    .header .right {
+        float: right;
+        width: 100px;
+    }
+
+        .header .right a {
+            margin-right: 12px;
+            width: 30px;
+            display: inline-block;
+            text-align: right;
+            float: right;
+        }
+
+            .header .right a img {
+                height: 22px;
+            }
+
+    .header .center {
+        text-align: center;
+        margin: 0 auto;
+        width: 100px;
+    }
+
+.menu li a {
+    display: block;
+    padding: 20px 0px 20px 20px;
+    border-bottom: 2px solid #e5e5e5;
+    text-decoration: none;
+    font-weight: normal;
+    cursor: pointer;
+    clear: both;
+}
+
+    .menu li a span {
+        float: left;
+        margin-top: 6px;
+    }
+
+    .menu li a img {
+        width: 30px;
+        margin-right: 10px;
+        float: left;
+    }
+
+[data-role=footer] {
+    margin-bottom: 20px;
+}
+
+/*Oorspronkelijk project*/
+#containerStart, #containerStop, #containerKeuze, #containerVergeten, #commentaar, #optieWerkend, #optieVergetend {
+    display: none;
+}
+
+#optieWerkend, #optieVergeten {
+    text-align: center;
+}
+
+#containerPagina {
+    position: relative;
+}
+
+#containerLogin {
+    position: absolute;
+    margin-top: -75px;
+    top: 50%;
+    left: 16px;
+    right: 16px;
+}
+
+.melding {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    display: none;
+    background-color: #FF5757;
+    color: white;
+    padding: 16px;
+    text-align: center;
+    z-index: 1;
+    font-size: 14px;
+}
+
+#containerStart, #containerStop, #containerKeuze, #containerVergeten, #commentaar, #optieWerkend, #optieVergeten {
+    display: none;
+}
+
+.time {
+    margin: 150px auto 100px auto;
+    text-align: center;
+}
+
+.containerTime {
+    margin: 80px auto 0px auto;
+    text-align: center;
+    width: 400px;
+    height: 286px;
+}
+
+    .containerTime textarea {
+        height: 50px;
+        padding: 5px;
+        max-width: 200px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .containerTime input[type=submit], .containerTime input[type=button] {
+        width: 200px;
+    }
+
+    .containerTime #tijdAanHetWerk {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .containerTime #progressbar {
+        width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+        vertical-align: middle;
+        margin-bottom: 15px;
+    }
+
+    .containerTime #progressbarLabel {
+        float: left;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        vertical-align: middle;
+        line-height: 25px;
+    }
+
+    .containerTime .start {
+        background: #33AD5C;
+        color: #FFFFFF;
+        border: 1px solid #33AD5C;
+    }
+
+    .containerTime .stop {
+        background: #FF4D4D;
+        color: #FFFFFF;
+        border: 1px solid #FF4D4D;
+    }
+
+        .containerTime .stop:hover {
+            zoom: 1;
+        }
+
+#tijdAanHetWerk {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#progressbar {
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+    margin-bottom: 15px;
+}
+
+#progressbarLabel {
+    float: left;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    vertical-align: middle;
+    line-height: 25px;
+}
+
+.start {
+    background: #33AD5C;
+    color: #FFFFFF;
+    border: 1px solid #33AD5C;
+}
+
+.stop {
+    background: #FF4D4D;
+    color: #FFFFFF;
+    border: 1px solid #FF4D4D;
+}
+
+    .stop:hover {
+        zoom: 1;
+    }
+
+.tabel {
+    border: 1px solid #003366;
+    border-bottom: 0px;
+    width: 100%;
+}
+
+    .tabel > tbody > tr > th {
+        background-color: #E5F0F9;
+        padding: 5px;
+        font-weight: bold;
+        text-align: center;
+        border: 1px solid #003366;
+        border-bottom: 2px solid #003366;
+    }
+
+    .tabel > tbody > tr > td {
+        padding: 5px 0px 5px 0px;
+        text-align: center;
+        border-bottom: 1px solid #003366;
+        border-left: 1px solid #003366;
+        border-right: 1px solid #003366;
+    }
+
+    .tabel span {
+        cursor: pointer;
+    }
+
+    .tabel .vanTot .textbox-small {
+        width: 60px;
+        margin-right: 15px;
+    }

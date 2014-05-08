@@ -1,0 +1,299 @@
+﻿<html class="ui-mobile">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Multi-page template</title>
+    <link rel="stylesheet" href="./themes/reset.css" />
+
+    <link rel="stylesheet" href="./themes/tijdsregistratie.css" />
+    <link href="themes/popup.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./themes/style.css" />
+    <link rel="stylesheet" href="./themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="./themes/jquery.mobile.structure-1.4.2.min.css" />
+    <link rel="stylesheet" href="https://rawgithub.com/arschmitz/jquery-mobile-datepicker-wrapper/v0.1.1/jquery.mobile.datepicker.css">
+    <script src="./scripts/jquery-1.10.2.min.js"></script>
+    <script src="./scripts/jquery.mobile-1.4.2.min.js"></script>
+    <script src="https://rawgithub.com/jquery/jquery-ui/1.10.4/ui/jquery.ui.datepicker.js"></script>
+    <script id="mobile-datepicker" src="https://rawgithub.com/arschmitz/jquery-mobile-datepicker-wrapper/v0.1.1/jquery.mobile.datepicker.js"></script>
+</head>
+
+<body class="ui-mobile-viewport ui-overlay-c" id="containerPagina">
+
+    <div data-role="page" id="home" data-theme="b">
+        <div data-role="header" class="header" data-position="fixed">
+            <div class="left"><a href="#home_panel"><img src="images/menu.png" /></a></div>
+            <div class="center"><h1><a href="#home">time.e-ok</a></h1></div>
+        </div>
+
+        <div data-role="content" class="ui-content" role="main">
+            <div class="melding">
+            </div>
+            <div data-role="popup" id="positionWindow" class="ui-content" data-theme="a">
+                <div id="optieWerkend">
+                    <form>
+                        <p>Gelieve te bevestigen dat u doorgewerkt hebt deze nacht.</p>
+                        <input type="submit" value="Ik heb doorgewerkt" class="knop stop" style="height: 50px;" onclick="post('STOP', 'stopWerkend')" />
+                        <textarea class="commentaar"></textarea>
+                    </form>
+                </div>
+                <div id="optieVergeten">
+                    <form>
+                        <p></p>
+                        <input type="text" class="tijd2 textbox-small" id="vergetenKeuze" /><br />
+                        <input type="submit" value="Stop op ingevulde uur" class="knop stop" style="height:50px;" onclick="post('STOP', 'stopVergetenKeuze')" />
+                        <textarea class="commentaar"></textarea>
+                    </form>
+                </div>
+            </div>
+
+            <div class="time">
+                <div class="containerTime">
+                    <div id="containerStart">
+                        <form>
+                            <input type="button" value="Start" class="knop start" style="height:50px;" onclick="post('START', 'start')" />
+                            <textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
+                        </form>
+                    </div>
+
+                    <div id="containerStop">
+                        <form>
+                            <p>U heeft vandaag al gewerkt voor</p>
+                            <p id="tijdAanHetWerk">00:00:00</p>
+                            <div id="progressbar"><div id='progressbarLabel'>00:00:00</div></div>
+                            <input type="button" value="Stop" class="knop stop" style="height:50px;" onclick="post('STOP', 'stop')" />
+                            <textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
+                        </form>
+                    </div>
+
+                    <div id="containerKeuze">
+                        <form>
+                            <p></p>
+                            <input type="button" value="Vergeten" class="knop stop" style="height:50px; width:100px;" onclick="popup('stopVergeten')" />
+                            <input type="button" value="Volgende dag" class="knop stop" style="height: 50px; width: 100px;" onclick="popup('stopWerkend')" />
+                        </form>
+                    </div>
+
+                    <div id="containerVergeten">
+                        <form>
+                            <p></p>
+                            <input type="text" id="vergeten" class="vergeten tijd2 textbox-small" /><br />
+                            <input type="submit" value="Vergeten" class="knop stop" style="height:50px;" onclick="post('STOP', 'stopVergeten')" />
+                            <textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div data-role="panel" id="home_panel" data-position="left" data-display="reveal" data-theme="b" class="ui-panel ui-panel-position-left ui-panel-display-reveal ui-body-b ui-panel-animate ui-panel-open">
+            <div class="ui-panel-inner">
+                <!--<div data-role="header" class="header" data-position="fixed">
+                    <div class="left"></div>
+                    <div class="center"><h1>&nbsp;</h1></div>
+                </div>-->
+                <a href="#home" data-transition="none" data-rel="close" class='home_hide_panel' style='display:none;'></a>
+                <ul class="menu">
+                    <li><a href="#home" data-rel="close" data-transition="none"><img src="images/home.png" /><span>Home</span><div class="clear-fix"></div></a></li>
+                    <li><a href="#statistieken" data-rel="close" data-transition="none"><img src="images/statistieken.png" /><span>Statistieken</span><div class="clear-fix"></div></a></li>
+                    <li><a onclick="logout()"><img src="images/logout.png" /><span>Logout</span><div class="clear-fix"></div></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="page" id="statistieken" data-theme="b">
+        <div data-role="header" class="header" data-position="fixed">
+            <div class="left"><a href="#statistieken_panel" data-transition="none"><img src="images/menu.png" /></a></div>
+            <div class="right"><a href="#positionWindow" data-role="none" data-rel="popup" data-position-to="window"><img src="images/kalender.png" /></a></div>
+            <div class="center"><h1><a href="#home">time.e-ok</a></h1></div>
+        </div>
+
+        <div data-role="popup" id="positionWindow" class="ui-content" data-theme="a">
+            <div style="text-align:center;">Selecteer van welke maand je de statistieken wilt opvragen.</div>
+            <input type="text" id="date-input" data-inline="true" data-role="date" style="display:none;">
+            <a data-rel="back" class="ui-btn" onclick="loadStatistieken();">Bevestig</a>
+        </div>
+
+        <div data-role="content" class="ui-content" role="main">
+            <div class="melding">
+            </div>
+            <table class="tabel" id="tabelStatistieken">
+                <tbody>
+                    <tr>
+                        <th>
+                            Datum
+                        </th>
+                        <th>
+                            Te doen
+                        </th>
+                        <th>
+                            Gedaan
+                        </th>
+                    </tr>
+                </tbody>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div data-role="panel" id="statistieken_panel" data-position="left" data-display="reveal" data-theme="b" class="ui-panel ui-panel-position-left ui-panel-display-reveal ui-body-b ui-panel-animate ui-panel-open">
+            <div class="ui-panel-inner">
+                <a href="#home" data-transition="none" data-rel="close" class='statistieken_hide_panel' style='display:none;'></a>
+                <ul class="menu">
+                    <li><a href="#home" data-rel="close" data-transition="none"><img src="images/home.png" /><span>Home</span><div class="clear-fix"></div></a></li>
+                    <li><a href="#statistieken" data-rel="close" data-transition="none"><img src="images/statistieken.png" /><span>Statistieken</span><div class="clear-fix"></div></a></li>
+                    <li><a onclick="logout()"><img src="images/logout.png" /><span>Logout</span><div class="clear-fix"></div></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/popup.js"></script>
+    <script src="scripts/database-connection.js"></script>
+    <script src="scripts/jquery-ui-1.10.4.custom.js"></script>
+    <script src="scripts/moment.js"></script>
+    <script src="scripts/jquery.inputmask.js"></script>
+    <script src="scripts/home.js"></script>
+    <script>
+        var mdwID = window.localStorage.getItem("mdwID");
+        //home
+        var tijdLogs;
+        var vandaag;
+        var positie = "", commentaar = "", opmerking = "", nacht = false;
+        var tijdAanHetWerk = moment(0);
+
+        $('.tijd2').inputmask('99u99');
+
+        //statistieken
+        var tijdPerDag;
+        var table = document.getElementById("tabelStatistieken");
+        var rijNummer = 1;
+        var vandaag = moment();
+
+        $(document).ready(function () {
+            loadHome();
+        });
+
+        function melding(bericht) {
+            $('.melding').text(bericht);
+            $('.melding').fadeIn();
+            setTimeout(function () { $('.melding').fadeOut(); }, 3000);
+        }
+
+        function loadHome() {
+            loadData();
+            loadStatistieken();
+        }
+
+        function logout() {
+            window.localStorage.removeItem("mdwID");
+            window.location.href = "./index.html#login";
+        }
+
+        function loadStatistieken() {
+            var maanden = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+            var maand = maanden[moment().month()] + " " + moment().year();
+            if ($('.ui-datepicker-month').text() != "") {
+                maand = $('.ui-datepicker-month').text() + " " + $('.ui-datepicker-year').text();
+            }
+
+            $.ajax({
+                datatype: 'json',
+                url: url + "api/TijdLog/GetTijdLogsVanMaand/?userID=" + mdwID + "&maand=" + maand,
+                data: null,
+                success: function (data) {
+                    tijdPerDag = data;
+                    invullenStatistieken();
+                },
+                error: function (e) {
+                    melding("Voor deze periode zijn de statistieken niet kunnen opgehaald worden.");
+                }
+            });
+        }
+
+        function invullenStatistieken() {
+            $('#tabelStatistieken tr').has('td').remove();
+            rijNummer = 1;
+            $.each(tijdPerDag, function (index, value) {
+                value.dag = moment(value.dag);
+                value.startTijd = moment(value.startTijd);
+                value.stopTijd = moment(value.stopTijd);
+                value.tijdGewerkt = moment.duration(value.tijdGewerkt);
+                value.tijdVerplicht = moment.duration(value.tijdVerplicht);
+                value.tijdVerschil = moment.duration(value.tijdVerschil);
+                value.tijdVerschilEffectief = moment.duration(value.tijdVerschilEffectief);
+
+                if (value.soortLijn == "dag") {
+                    voegRijToeDag(rijNummer, value.dag, value.tijdGewerkt, value.tijdVerplicht, value.tijdVerschil, value.tijdVerschilEffectief, value.startTijd, value.stopTijd);
+                    rijNummer += 2;
+                }
+                if (value.soortLijn == "week") {
+                    voegRijToeWeek(rijNummer, value.dag, value.tijdGewerkt, value.tijdVerplicht, value.tijdVerschil, value.tijdVerschilEffectief, value.startTijd, value.stopTijd);
+                    rijNummer += 1;
+                }
+                if (value.soortLijn == "maand") {
+                    voegRijToeMaand(rijNummer, value.dag, value.tijdGewerkt, value.tijdVerplicht, value.tijdVerschil, value.tijdVerschilEffectief, value.startTijd, value.stopTijd);
+                    rijNummer += 1;
+                }
+            });
+        }
+
+
+        function voegRijToeDag(rijNummer, datum, gewerkt, verplicht, verschil, verschilEffectief, gestartOm, gestoptOm) {
+            var row = table.insertRow(rijNummer);
+            var datumElement = row.insertCell(0);
+            var verplichtElement = row.insertCell(1);
+            var gewerktElement = row.insertCell(2);
+            datumElement.innerHTML = ' ' + datum.format("dd DD/MM");
+
+            gewerktElement.innerHTML = moment.utc(gewerkt.valueOf()).format("HH:mm");
+            verplichtElement.innerHTML = moment.utc(verplicht.valueOf()).format("HH:mm");
+
+            var row = table.insertRow(rijNummer + 1);
+            row.className = "info";
+            var infoVanDag = row.insertCell(0);
+            infoVanDag.setAttribute("colspan", 8);
+            infoVanDag.className = "infoVanDag" + datum.date();
+            infoVanDag.style.display = "none";
+        }
+
+        function voegRijToeWeek(rijNummer, datum, gewerkt, verplicht, verschil, verschilEffectief, gestartOm, gestoptOm) {
+            var row = table.insertRow(rijNummer);
+            row.style.backgroundColor = "#E0E0DD";
+            var datumElement = row.insertCell(0);
+            var verplichtElement = row.insertCell(1);
+            var gewerktElement = row.insertCell(2);
+            datumElement.innerHTML = "<b>week</b>";
+            gewerktElement.innerHTML = toonTijdInUrenEnMinuten(gewerkt);
+            verplichtElement.innerHTML = toonTijdInUrenEnMinuten(verplicht);
+        }
+
+        function voegRijToeMaand(rijNummer, datum, gewerkt, verplicht, verschil, verschilEffectief, gestartOm, gestoptOm) {
+            var row = table.insertRow(rijNummer);
+            row.style.backgroundColor = "#E5F0F9";
+            var datumElement = row.insertCell(0);
+            var verplichtElement = row.insertCell(1);
+            var gewerktElement = row.insertCell(2);
+
+            datumElement.innerHTML = "<b>maand</b>";
+            gewerktElement.innerHTML = toonTijdInUrenEnMinuten(gewerkt);
+            verplichtElement.innerHTML = toonTijdInUrenEnMinuten(verplicht);
+        }
+
+        function toonTijdInUrenEnMinuten(duration) {
+            if (duration < 0) {
+                duration = moment.duration(duration.valueOf() * -1);
+            }
+            var uren = (duration.days() * 24) + duration.hours();
+            var minuten = duration.minutes();
+            if (uren < 10) {
+                uren = "0" + uren;
+            }
+            if (minuten < 10) {
+                minuten = "0" + minuten;
+            }
+            return uren + ":" + minuten;
+        }
+    </script>
+</body>
+
+</html>
