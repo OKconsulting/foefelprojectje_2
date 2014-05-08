@@ -21,7 +21,7 @@
     <div data-role="page" id="home" data-theme="b">
         <div data-role="header" class="header" data-position="fixed">
             <div class="left"><a href="#home_panel"><img src="images/menu.png" /></a></div>
-            <div class="center"><h1><a href="#home">time.e-ok</a></h1></div>
+            <div class="center"><h1><a href="#home">Time.e-ok</a></h1></div>
         </div>
 
         <div data-role="content" class="ui-content" role="main">
@@ -87,10 +87,6 @@
 
         <div data-role="panel" id="home_panel" data-position="left" data-display="reveal" data-theme="b" class="ui-panel ui-panel-position-left ui-panel-display-reveal ui-body-b ui-panel-animate ui-panel-open">
             <div class="ui-panel-inner">
-                <!--<div data-role="header" class="header" data-position="fixed">
-                    <div class="left"></div>
-                    <div class="center"><h1>&nbsp;</h1></div>
-                </div>-->
                 <a href="#home" data-transition="none" data-rel="close" class='home_hide_panel' style='display:none;'></a>
                 <ul class="menu">
                     <li><a href="#home" data-rel="close" data-transition="none"><img src="images/home.png" /><span>Home</span><div class="clear-fix"></div></a></li>
@@ -104,11 +100,11 @@
     <div data-role="page" id="statistieken" data-theme="b">
         <div data-role="header" class="header" data-position="fixed">
             <div class="left"><a href="#statistieken_panel" data-transition="none"><img src="images/menu.png" /></a></div>
-            <div class="right"><a href="#positionWindow" data-role="none" data-rel="popup" data-position-to="window"><img src="images/kalender.png" /></a></div>
-            <div class="center"><h1><a href="#home">time.e-ok</a></h1></div>
+            <div class="right"><a href="#selecteerPeriode" data-role="none" data-rel="popup" data-position-to="window"><img src="images/kalender.png" /></a></div>
+            <div class="center"><h1><a href="#home">Time.e-ok</a></h1></div>
         </div>
 
-        <div data-role="popup" id="positionWindow" class="ui-content" data-theme="a">
+        <div data-role="popup" id="selecteerPeriode" class="ui-content" data-theme="a">
             <div style="text-align:center;">Selecteer van welke maand je de statistieken wilt opvragen.</div>
             <input type="text" id="date-input" data-inline="true" data-role="date" style="display:none;">
             <a data-rel="back" class="ui-btn" onclick="loadStatistieken();">Bevestig</a>
