@@ -78,7 +78,8 @@
     <Content Include="index.html" />
     <Content Include="logo.png" />
     <Content Include="scripts\database-connection.js" />
-    <Content Include="scripts\home.js" />
+    <Content Include="scripts\statistieken.js" />
+    <Content Include="scripts\tijd.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
     <Content Include="scripts\jquery-ui-1.10.4.custom.js" />
     <Content Include="scripts\jquery.inputmask.js" />
@@ -106,6 +107,15 @@
     <Content Include="themes\reset.css" />
     <Content Include="themes\style.css" />
     <Content Include="themes\tijdsregistratie.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

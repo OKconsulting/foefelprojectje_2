@@ -22,10 +22,10 @@
 function bepaalSituatie() {
     //de eerste value in de array van tijdlogs zal het tijdstip van gisteren zijn indien vergeten of het tijdstip van vandaag als het niet vergeten is
     vandaag = moment();
+    var tijdAanHetWerk = moment(0);
     if (tijdLogs.length == 0) {
         $('#start').fadeIn();
     } else {
-        console.log(vandaag.diff(tijdLogs[0]['tijdstempel'], 'day'));
         if (vandaag.diff(tijdLogs[0]['tijdstempel'], 'day') == 0 && tijdLogs[0]['type'] == 'START') {
             //dit zal enkel gebeuren als ik in de controller de tijdLog van de vorige dag heb toegevoegt.
             $('#containerKeuze').find("p").html(" Uw laatste log dateert van " + tijdLogs[0]["tijdstempel"].format("DD/MM") + ". \n Bent u nog aan het werken of bent u vergeten uit te checken?").wrap('<pre />');
