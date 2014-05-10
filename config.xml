@@ -9,6 +9,9 @@
   <icon src="/icons/android/icon-ldpi.png" gap:density="ldpi" gap:platform="android" />
   <icon src="/icons/android/icon-mdpi.png" gap:density="mdpi" gap:platform="android" />
   <icon src="/icons/android/icon-xhdpi.png" gap:density="xhdpi" gap:platform="android" />
+  <splash src="/icons/ios/Default@2x~iphone.png" width="640" height="960" gap:platform="ios" />
+  <splash src="/icons/ios/Default~iphone.png" width="320" height="480" gap:platform="ios" />
+  <splash src="/icons/ios/Default-568h@2x~iphone.png" width="640" height="1136" gap:platform="ios" />
   <author email="nicolanauwynck@hotmail.com">nicolanauwynck@hotmail.com</author>
   <access origin="*" />
   <preference name="phonegap-version" value="3.3.0" />
