@@ -172,7 +172,6 @@ function post(type, vergeten) {
 }
 
 function getLocatie() {
-    alert("locatie");
     if (navigator.geolocation) {
         var geoSuccessHandler = function (position) {
             positie = position.coords.latitude + ";" + position.coords.longitude
