@@ -36,7 +36,7 @@ function bepaalSituatie() {
     //de eerste value in de array van tijdlogs zal het tijdstip van gisteren zijn indien vergeten of het tijdstip van vandaag als het niet vergeten is
     vandaag = moment();
     var tijdAanHetWerk = moment(0);
-  
+
     if (tijdLogs.length == 0) {
         $('#start').fadeIn();
     } else {
@@ -94,7 +94,7 @@ function post(type, vergeten) {
     var tijdstempelVroeger;
     var tijdstempel = moment;
     vandaag = moment();
-    document.addEventListener("deviceready", getLocatie, false);
+    getLocatie();
 
     $('.commentaar').each(function () {
         commentaar += $(this).val();
