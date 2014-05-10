@@ -84,7 +84,6 @@ function bepaalSituatie() {
         }
     }
     $('#commentaar').fadeIn();
-    getLocatie();
 }
 
 function updateProgress() {
@@ -95,7 +94,7 @@ function post(type, vergeten) {
     var tijdstempelVroeger;
     var tijdstempel = moment;
     vandaag = moment();
-    getLocatie();
+    document.addEventListener("deviceready", getLocatie, false);
 
     $('.commentaar').each(function () {
         commentaar += $(this).val();
