@@ -1,4 +1,5 @@
-﻿function popup(optie) {
+﻿var timer;
+function popup(optie) {
     $('#optieVergeten').css("display", "none");
     $('#optieWerkend').css("display", "none");
     $('#popupKeuzeKlik').click();
@@ -21,19 +22,21 @@ function loadData() {
             $.each(tijdLogs, function (index, value) {
                 value['tijdstempel'] = moment(value['tijdstempel']);
             })
+
+            clearInterval(timer);
             bepaalSituatie();
         },
         error: function (e) {
             melding("De data is niet opgehaald.");
         }
     });
-
 }
 
 function bepaalSituatie() {
     //de eerste value in de array van tijdlogs zal het tijdstip van gisteren zijn indien vergeten of het tijdstip van vandaag als het niet vergeten is
     vandaag = moment();
     var tijdAanHetWerk = moment(0);
+  
     if (tijdLogs.length == 0) {
         $('#start').fadeIn();
     } else {
@@ -68,7 +71,7 @@ function bepaalSituatie() {
 
                 $("#progressbarLabel").text(moment.utc(moment.duration(tijdLogs[0]['commentaar']).valueOf()).format("HH:mm:ss"));
 
-                setInterval(function () {
+                timer = setInterval(function () {
                     tijdAanHetWerk += 1000;
                     $('#tijdAanHetWerk').text(moment(tijdAanHetWerk).format("H:mm:ss"));
 
@@ -82,6 +85,10 @@ function bepaalSituatie() {
     }
     $('#commentaar').fadeIn();
     getLocatie();
+}
+
+function updateProgress() {
+
 }
 
 function post(type, vergeten) {
