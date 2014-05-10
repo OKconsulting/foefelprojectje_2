@@ -64,6 +64,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="cordova.js" />
+    <Content Include="cordova_plugins.js" />
     <Content Include="home.html" />
     <Content Include="icons\android\icon-hdpi.png" />
     <Content Include="icons\android\icon-ldpi.png" />

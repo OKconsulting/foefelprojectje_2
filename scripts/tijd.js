@@ -10,6 +10,8 @@ function popup(optie) {
     }
 }
 
+document.addEventListener("deviceready", getLocatie, false);
+
 function loadData() {
     $('#containerStart, #containerStop, #containerKeuze').css('display', 'none');
 
@@ -83,7 +85,6 @@ function bepaalSituatie() {
             }
         }
     }
-    getLocatie();
 }
 
 function updateProgress() {
@@ -171,6 +172,7 @@ function post(type, vergeten) {
 }
 
 function getLocatie() {
+    alert("locatie");
     if (navigator.geolocation) {
         var geoSuccessHandler = function (position) {
             positie = position.coords.latitude + ";" + position.coords.longitude
