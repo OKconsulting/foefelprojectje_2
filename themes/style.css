@@ -29,13 +29,12 @@ b {
 }
 
 .header {
-    padding: 13px 0px 11px 0px !important;
     border-bottom: 3px #007369 solid !important;
     max-height: 52px;
 }
 
     .header h1 {
-        padding-top: 1px;
+        padding: 14px 0px 11px 0px !important;
     }
 
     .header .left {
@@ -44,9 +43,9 @@ b {
     }
 
         .header .left a {
+            padding: 13px 0px 11px 12px !important;
             color: white;
-            margin-left: 12px;
-            width: 32px;
+            width: 50px;
             display: inline-block;
             text-align: left;
             float: left;
@@ -62,8 +61,8 @@ b {
     }
 
         .header .right a {
-            margin-right: 12px;
-            width: 30px;
+            padding: 13px 12px 11px 0px !important;
+            width: 50px;
             display: inline-block;
             text-align: right;
             float: right;
