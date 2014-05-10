@@ -4,7 +4,8 @@
   <description>
     Time.e-ok is nu beschikbaar op uw toestel! Met de applicatie kan je de werktijden loggen en raadplegen net zoals op de website www.time.e-ok.be!
   </description>
-  <icon src="logo.png" />
+  <icon src="android.png" gap:platform="android"/>
+  <icon src="ios.png" gap:platform="ios"/>
   <gap:splash src="splash.png" />
   <gap:splash src="splash.png" gap:platform="ios" width="640" height="1136" />
   <icon src="/icons/android/icon-hdpi.png" gap:density="hdpi" gap:platform="android" />
