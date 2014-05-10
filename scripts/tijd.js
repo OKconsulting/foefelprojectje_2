@@ -83,7 +83,7 @@ function bepaalSituatie() {
             }
         }
     }
-    $('#commentaar').fadeIn();
+    getLocatie();
 }
 
 function updateProgress() {
