@@ -69,6 +69,9 @@
     <Content Include="icons\android\icon-ldpi.png" />
     <Content Include="icons\android\icon-mdpi.png" />
     <Content Include="icons\android\icon-xhdpi.png" />
+    <Content Include="icons\ios\Default%402x~iphone.png" />
+    <Content Include="splash.png" />
+    <Content Include="icons\ios\Default~iphone.png" />
     <Content Include="images\home.png" />
     <Content Include="images\kalender.png" />
     <Content Include="images\logo-okc.png" />

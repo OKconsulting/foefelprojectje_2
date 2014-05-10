@@ -219,6 +219,7 @@ input[type=submit], input[type=button] {
     padding: 2px 8px;
     margin: 5px 0;
     height: 50px;
+    -webkit-appearance: none;
 }
 
 .tabel {
