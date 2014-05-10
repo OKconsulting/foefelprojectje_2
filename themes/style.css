@@ -91,11 +91,11 @@ b {
 
     .menu li a span {
         float: left;
-        margin-top: 6px;
+        margin-top: 3px;
     }
 
     .menu li a img {
-        width: 30px;
+        width: 25px;
         margin-right: 10px;
         float: left;
     }
@@ -105,11 +105,11 @@ b {
 }
 
 /*Oorspronkelijk project*/
-#containerStart, #containerStop, #containerKeuze, #containerVergeten, #commentaar, #optieWerkend, #optieVergetend {
+#containerStart, #containerStop, #containerKeuze, #containerVergeten, #commentaar, #optieWerkend, #optieVergeten {
     display: none;
 }
 
-#optieWerkend, #optieVergeten {
+form {
     text-align: center;
 }
 
@@ -138,12 +138,13 @@ b {
     z-index: 1;
     font-size: 14px;
 }
-p{
-    margin:10px 0;
+
+p {
+    margin: 10px 0;
 }
 
-#containerStart, #containerStop, #containerKeuze, #containerVergeten, #commentaar, #optieWerkend, #optieVergeten {
-    display: none;
+.textbox-small {
+    width: 50px !important;
 }
 
 .time {
@@ -158,18 +159,7 @@ p{
     height: 286px;
 }
 
-    .containerTime textarea {
-        height: 50px;
-        padding: 5px;
-        max-width: 200px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
 
-    .containerTime input[type=submit], .containerTime input[type=button] {
-        width: 200px;
-    }
 
     .containerTime #tijdAanHetWerk {
         font-size: 18px;
@@ -196,21 +186,41 @@ p{
         line-height: 25px;
     }
 
-    .containerTime .start {
-        background: #33AD5C;
-        color: #FFFFFF;
-        border: 1px solid #33AD5C;
+.start {
+    background: #33AD5C;
+    color: #FFFFFF;
+    border: 1px solid #33AD5C;
+}
+
+.stop {
+    background: #FF4D4D;
+    color: #FFFFFF;
+    border: 1px solid #FF4D4D;
+}
+
+    .stop:hover {
+        zoom: 1;
     }
 
-    .containerTime .stop {
-        background: #FF4D4D;
-        color: #FFFFFF;
-        border: 1px solid #FF4D4D;
-    }
+textarea {
+    height: 50px;
+    padding: 5px;
+    max-width: 200px !important;
+    display: block;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
 
-        .containerTime .stop:hover {
-            zoom: 1;
-        }
+input[type=submit], input[type=button] {
+    width: 200px !important;
+}
+
+.knop {
+    zoom: 1;
+    padding: 2px 8px;
+    margin: 5px 0;
+    height: 50px;
+}
 
 .tabel {
     border: 1px solid #003366;

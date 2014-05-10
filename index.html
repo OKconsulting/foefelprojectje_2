@@ -43,10 +43,6 @@
             $('[data-role=footer]').css("display", "none");
         });
 
-        $('#LoginInput, #PaswoordInput').blur(function () {
-            $('[data-role=footer]').css("display", "block");
-        });
-
         var timeout;
         function melding(bericht) {
             $('.melding').text(bericht);

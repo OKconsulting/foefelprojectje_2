@@ -24,20 +24,25 @@
         <div data-role="content" class="ui-content" role="main">
             <div class="melding">
             </div>
-            <div data-role="popup" id="positionWindow" class="ui-content" data-theme="a">
+            <a href="#popupKeuze" id="popupKeuzeKlik" data-role="none" data-rel="popup" data-position-to="window" style="display:none;">test</a>
+            <div data-role="popup" id="popupKeuze" class="ui-content" data-theme="a">
                 <div id="optieWerkend">
                     <form>
                         <p>Gelieve te bevestigen dat u doorgewerkt hebt deze nacht.</p>
-                        <input type="submit" value="Ik heb doorgewerkt" class="knop stop" style="height: 50px;" onclick="post('STOP', 'stopWerkend')" />
-                        <textarea class="commentaar"></textarea>
+                        <a data-rel="back">
+                            <input type="button" value="Ik heb doorgewerkt" class="knop stop" onclick="post('STOP', 'stopWerkend')" />
+                        </a>
+                        <textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
                     </form>
                 </div>
                 <div id="optieVergeten">
                     <form>
                         <p></p>
-                        <input type="text" class="tijd2 textbox-small" id="vergetenKeuze" /><br />
-                        <input type="submit" value="Stop op ingevulde uur" class="knop stop" style="height:50px;" onclick="post('STOP', 'stopVergetenKeuze')" />
-                        <textarea class="commentaar"></textarea>
+                        <input type="text" class="tijd2 textbox-small" id="vergetenKeuze" data-role="none" /><br />
+                        <a data-rel="back">
+                            <input type="button" value="Stop op ingevulde uur" class="knop stop" onclick="post('STOP', 'stopVergetenKeuze')" />
+                        </a>
+                        <textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
                     </form>
                 </div>
             </div>
@@ -46,7 +51,7 @@
                 <div class="containerTime">
                     <div id="containerStart">
                         <form>
-                            <input type="button" value="Start" class="knop start" style="height:50px;" onclick="post('START', 'start')" />
+                            <input type="button" value="Start" class="knop start" onclick="post('START', 'start')" />
                             <textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
                         </form>
                     </div>
@@ -56,7 +61,7 @@
                             <p>U heeft vandaag al gewerkt voor</p>
                             <p id="tijdAanHetWerk">00:00:00</p>
                             <div id="progressbar"><div id='progressbarLabel'>00:00:00</div></div>
-                            <input type="button" value="Stop" class="knop stop" style="height:50px;" onclick="post('STOP', 'stop')" />
+                            <input type="button" value="Stop" class="knop stop" onclick="post('STOP', 'stop')" />
                             <textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
                         </form>
                     </div>
@@ -64,8 +69,8 @@
                     <div id="containerKeuze">
                         <form>
                             <p></p>
-                            <input type="button" value="Vergeten" class="knop stop" style="height:50px; width:100px;" onclick="popup('stopVergeten')" />
-                            <input type="button" value="Volgende dag" class="knop stop" style="height: 50px; width: 100px;" onclick="popup('stopWerkend')" />
+                            <input type="button" value="Ik ben het vergeten" class="knop stop" onclick="popup('stopVergeten')" />
+                            <input type="button" value="Ik heb doorgewerekt" class="knop stop" onclick="popup('stopWerkend')" />
                         </form>
                     </div>
 
@@ -73,7 +78,7 @@
                         <form>
                             <p></p>
                             <input type="text" id="vergeten" class="vergeten tijd2 textbox-small" /><br />
-                            <input type="submit" value="Vergeten" class="knop stop" style="height:50px;" onclick="post('STOP', 'stopVergeten')" />
+                            <input type="submit" value="Vergeten" class="knop stop" onclick="post('STOP', 'stopVergeten')" />
                             <textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
                         </form>
                     </div>
@@ -152,6 +157,7 @@
         var vandaag;
         var positie = "", commentaar = "", opmerking = "", nacht = false;
         var tijdAanHetWerk = moment(0);
+        moment.lang('nl');
 
         $('.tijd2').inputmask('99u99');
 
