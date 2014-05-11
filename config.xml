@@ -4,20 +4,22 @@
   <description>
     Time.e-ok is nu beschikbaar op uw toestel! Met de applicatie kan je de werktijden loggen en raadplegen net zoals op de website www.time.e-ok.be!
   </description>
+  <author email="nicolanauwynck@hotmail.com">nicolanauwynck@hotmail.com</author>
+  <access origin="*" />
+
+  <gap:splash src="small.9.png" />
+
   <icon src="android.png" gap:platform="android"/>
-  <icon src="ios.png" gap:platform="ios"/>
-  <gap:splash src="splash.png" gap:platform="ios" width="640" height="1136" />
   <icon src="/icons/android/icon-hdpi.png" gap:density="hdpi" gap:platform="android" />
   <icon src="/icons/android/icon-ldpi.png" gap:density="ldpi" gap:platform="android" />
   <icon src="/icons/android/icon-mdpi.png" gap:density="mdpi" gap:platform="android" />
   <icon src="/icons/android/icon-xhdpi.png" gap:density="xhdpi" gap:platform="android" />
-  <author email="nicolanauwynck@hotmail.com">nicolanauwynck@hotmail.com</author>
-  <access origin="*" />
+
   <preference name="phonegap-version" value="3.3.0" />
   <preference name="orientation" value="portrait" />
-  <preference name="permissions" value="none" />
   <preference name="DisallowOverscroll" value="true" />
+  <preference name="permissions" value="none" />
+
   <gap:plugin name="org.apache.cordova.geolocation" />
   <gap:plugin name="com.phonegap.plugin.statusbar" />
-  <gap:plugin name="org.apache.cordova.geolocation" />
 </widget>
