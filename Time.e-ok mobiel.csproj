@@ -70,10 +70,10 @@
     <Content Include="icons\android\icon-ldpi.png" />
     <Content Include="icons\android\icon-mdpi.png" />
     <Content Include="icons\android\icon-xhdpi.png" />
-    <Content Include="icons\ios\Default%402x~iphone.png" />
-    <Content Include="logo.png" />
-    <Content Include="splash_android.png" />
-    <Content Include="icons\ios\Default~iphone.png" />
+    <Content Include="icons\android\logo.png" />
+    <Content Include="icons\android\splash.9.png" />
+    <Content Include="icons\ios\logo.png" />
+    <Content Include="icons\ios\splash.png" />
     <Content Include="images\home.png" />
     <Content Include="images\kalender.png" />
     <Content Include="images\logo-okc.png" />
@@ -113,7 +113,6 @@
     <Content Include="themes\reset.css" />
     <Content Include="themes\style.css" />
     <Content Include="themes\tijdsregistratie.css" />
-    <Content Include="splash_ios.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
