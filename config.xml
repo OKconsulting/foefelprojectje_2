@@ -8,7 +8,7 @@
   <access origin="*" />
 
   <icon src="/icons/ios/logo.png" gap:platform="ios"/>
-  <gap:splash src="/icons/ios/.png" gap:platform="ios" width="640" height="1136" />
+  <gap:splash src="/icons/ios/splash.png" gap:platform="ios" width="640" height="1136" />
 
   <icon src="/icons/android/logo.png" gap:platform="android"/>
   <gap:splash src="/icons/android/splash.9.png" gap:platform="android" />
