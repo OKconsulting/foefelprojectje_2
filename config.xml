@@ -6,7 +6,6 @@
   </description>
   <icon src="android.png" gap:platform="android"/>
   <icon src="ios.png" gap:platform="ios"/>
-  <gap:splash src="splash.png" />
   <gap:splash src="splash.png" gap:platform="ios" width="640" height="1136" />
   <icon src="/icons/android/icon-hdpi.png" gap:density="hdpi" gap:platform="android" />
   <icon src="/icons/android/icon-ldpi.png" gap:density="ldpi" gap:platform="android" />
