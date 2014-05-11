@@ -71,7 +71,8 @@
     <Content Include="icons\android\icon-mdpi.png" />
     <Content Include="icons\android\icon-xhdpi.png" />
     <Content Include="icons\ios\Default%402x~iphone.png" />
-    <Content Include="splash.png" />
+    <Content Include="logo.png" />
+    <Content Include="splash_android.png" />
     <Content Include="icons\ios\Default~iphone.png" />
     <Content Include="images\home.png" />
     <Content Include="images\kalender.png" />
@@ -82,7 +83,6 @@
     <Content Include="images\menu.png" />
     <Content Include="images\statistieken.png" />
     <Content Include="index.html" />
-    <Content Include="logo.png" />
     <Content Include="scripts\database-connection.js" />
     <Content Include="scripts\statistieken.js" />
     <Content Include="scripts\tijd.js" />
@@ -113,6 +113,7 @@
     <Content Include="themes\reset.css" />
     <Content Include="themes\style.css" />
     <Content Include="themes\tijdsregistratie.css" />
+    <Content Include="splash_ios.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
