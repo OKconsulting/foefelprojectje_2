@@ -72,8 +72,10 @@
     <Content Include="icons\android\icon-xhdpi.png" />
     <Content Include="icons\android\logo.png" />
     <Content Include="icons\android\splash.9.png" />
+    <Content Include="icons\ios\large.png" />
     <Content Include="icons\ios\logo.png" />
-    <Content Include="icons\ios\splash.png" />
+    <Content Include="icons\ios\small.png" />
+    <Content Include="icons\ios\xlarge.png" />
     <Content Include="images\home.png" />
     <Content Include="images\kalender.png" />
     <Content Include="images\logo-okc.png" />
