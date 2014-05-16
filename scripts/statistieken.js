@@ -40,7 +40,6 @@ function invullenStatistieken() {
 }
 
 function voegRijToeDag(rijNummer, dag) {
-    console.log(dag);
     var row = table.insertRow(rijNummer);
     var datumElement = row.insertCell(0);
     var verplichtElement = row.insertCell(1);

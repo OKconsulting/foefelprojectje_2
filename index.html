@@ -39,9 +39,9 @@
             }
         });
 
-        $('#LoginInput, #PaswoordInput').focus(function () {
-            $('[data-role=footer]').css("display", "none");
-        });
+        //$('#LoginInput, #PaswoordInput').focus(function () {
+        //    $('[data-role=footer]').css("display", "none");
+        //});
 
         var timeout;
         function melding(bericht) {
@@ -52,7 +52,6 @@
         }
 
         function login() {
-            console.log('click');
             var user = { UserName: $("#LoginInput").val(), Paswoord: $("#PaswoordInput").val(), MedewerkerID: 0, Role: "" };
 
             $.ajax({

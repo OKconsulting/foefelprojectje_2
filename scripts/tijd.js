@@ -87,10 +87,6 @@ function bepaalSituatie() {
     }
 }
 
-function updateProgress() {
-
-}
-
 function post(type, vergeten) {
     var tijdstempelVroeger;
     var tijdstempel = moment;
@@ -182,9 +178,8 @@ function getLocatie() {
         };
 
         var geoErrorHandler = function (error) {
-
             opmerkingLocatie = "de medewerker heeft geweigert zijn geolocatie mee te geven.";
-            alert("U heeft uw browser niet toegelaten om de locatie op te halen");
+            melding("U heeft uw browser niet toegelaten om de locatie op te halen");
         };
 
         var positionOptions = {
