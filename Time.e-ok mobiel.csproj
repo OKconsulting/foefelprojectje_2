@@ -76,6 +76,7 @@
     <Content Include="icons\ios\logo.png" />
     <Content Include="icons\ios\small.png" />
     <Content Include="icons\ios\xlarge.png" />
+    <Content Include="images\herladen.png" />
     <Content Include="images\home.png" />
     <Content Include="images\kalender.png" />
     <Content Include="images\logo-okc.png" />

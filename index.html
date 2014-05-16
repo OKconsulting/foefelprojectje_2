@@ -21,7 +21,7 @@
             <div id="containerLogin">
                 <input type="email" id="LoginInput" placeholder="Login" />
                 <input type="password" id="PaswoordInput" placeholder="Paswoord" />
-                <input type="button" value="Inloggen" onclick="login()" />
+                <input type="button" id="inloggen" value="Inloggen" onclick="login();" />
             </div>
         </div>
         <div data-role="footer" data-position="fixed">
@@ -29,10 +29,10 @@
         </div>
     </div>
     <script src="scripts/database-connection.js"></script>
-    <script>
+    <script charset="UTF-8">
         $(document).ready(function () {
             var mdwID = window.localStorage.getItem("mdwID");
-            
+
             if (mdwID != null) {
                 window.localStorage.setItem("mdwID", mdwID);
                 window.location.href = "./home.html#home";
@@ -52,6 +52,7 @@
         }
 
         function login() {
+            console.log('click');
             var user = { UserName: $("#LoginInput").val(), Paswoord: $("#PaswoordInput").val(), MedewerkerID: 0, Role: "" };
 
             $.ajax({

@@ -18,6 +18,7 @@
     <div data-role="page" id="home" data-theme="b">
         <div data-role="header" class="header" data-position="fixed">
             <div class="left"><a href="#home_panel"><img src="images/menu.png" /></a></div>
+            <div class="right"><a href="#selecteerPeriode" data-role="none" data-rel="popup" data-position-to="window" onclick="loadData();"><img src="images/herladen.png" /></a></div>
             <div class="center"><h1><a href="#home">Time.e-ok</a></h1></div>
         </div>
 
@@ -151,12 +152,12 @@
     <script src="scripts/tijd.js"></script>
     <script src="scripts/statistieken.js"></script>
     <script src="cordova.js"></script>
-    <script>
+    <script charset="UTF-8">
         var mdwID = window.localStorage.getItem("mdwID");
         //home
         var tijdLogs;
         var vandaag;
-        var positie = "", commentaar = "", opmerking = "", nacht = false;
+        var latitudeLongitude = "", commentaar = "", opmerking = "", opmerkingLocatie = "", opmerkingHR = "", nacht = false;
         var tijdAanHetWerk = moment(0);
         moment.lang('nl');
 

@@ -152,7 +152,11 @@ function post(type, vergeten) {
         nacht = true;
     }
 
-    var tijdlog = { tijdLogID: 0, mdwID: mdwID, tijdstempel: tijdstempel, latitudeLongitude: positie, commentaar: commentaar, opmerking: opmerking, type: type, nacht: nacht };
+    if (latitudeLongitude == "" && opmerkingLocatie == "") {
+        opmerkingLocatie = "de locatie is niet correct opgehaald kunnen worden";
+    }
+
+    var tijdlog = { tijdLogID: 0, mdwID: mdwID, tijdstempel: tijdstempel, latitudeLongitude: latitudeLongitude, commentaar: commentaar, opmerking: opmerking, type: type, nacht: nacht, opmerkingHR: opmerkingHR, opmerkingLocatie: opmerkingLocatie };
 
     $.ajax({
         url: url + '/api/TijdLog/PostTijdLog',
@@ -164,7 +168,7 @@ function post(type, vergeten) {
             loadData();
         },
         error: function (e) {
-            melding("Error: " + e.message);
+            melding("Er is iets misgegaan. Heeft u een actieve internetverbinding?");
         },
         dataType: 'json',
         contentType: "application/json"
@@ -174,13 +178,13 @@ function post(type, vergeten) {
 function getLocatie() {
     if (navigator.geolocation) {
         var geoSuccessHandler = function (position) {
-            positie = position.coords.latitude + ";" + position.coords.longitude
+            latitudeLongitude = position.coords.latitude + ";" + position.coords.longitude
         };
 
         var geoErrorHandler = function (error) {
-            positie = "";
-            opmerking = "De medewerker heeft geweigert zijn geolocatie mee te geven.";
-            melding("U heeft uw browser niet toegelaten om de locatie op te halen");
+
+            opmerkingLocatie = "de medewerker heeft geweigert zijn geolocatie mee te geven.";
+            alert("U heeft uw browser niet toegelaten om de locatie op te halen");
         };
 
         var positionOptions = {
@@ -190,8 +194,7 @@ function getLocatie() {
 
         navigator.geolocation.getCurrentPosition(geoSuccessHandler, geoErrorHandler, positionOptions);
     } else {
-        positie = "";
-        opmerking = "De browser van deze medewerker ondersteund geolocatie niet.";
+        opmerkingLocatie = "de medewerker zijn toestel ondersteund geolocatie niet.";
         melding("uw browser ondersteund locatievoorziening niet");
     }
 }

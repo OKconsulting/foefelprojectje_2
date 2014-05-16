@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget id="com.okc.time.e-ok" version="1.0.3" versionCode="266" xmlns:gap="http://phonegap.com/ns/1.0" xmlns="http://www.w3.org/ns/widgets">
+<widget id="com.okc.time.e-ok" version="1.0.4" versionCode="267" xmlns:gap="http://phonegap.com/ns/1.0" xmlns="http://www.w3.org/ns/widgets">
   <name>Time.e-ok</name>
   <description>
     Time.e-ok is nu beschikbaar op uw toestel! Met de applicatie kan je de werktijden loggen en raadplegen net zoals op de website www.time.e-ok.be!
@@ -7,8 +7,8 @@
   <author email="nicolanauwynck@hotmail.com">nicolanauwynck@hotmail.com</author>
   <access origin="*" />
 
-  <icon src="icon.png" gap:platform="ios" width="57" height="57" />
-  <icon src="icon-72.png" gap:platform="ios" width="72" height="72" />
+  <icon src="/icons/ios/icon.png" gap:platform="ios" width="57" height="57" />
+  <icon src="/icons/ios/icon-72.png" gap:platform="ios" width="72" height="72" />
   <gap:splash src="/icons/ios/small.png" gap:platform="ios" width="320" height="480" />
   <gap:splash src="/icons/ios/large.png" gap:platform="ios" width="640" height="960" />
   <gap:splash src="/icons/ios/xlarge.png" gap:platform="ios" width="640" height="1136" />
