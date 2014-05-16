@@ -27,8 +27,8 @@ function invullenStatistieken() {
         value.datum = moment(value.datum);
         value.startTijd = moment(value.startTijd);
         value.stopTijd = moment(value.stopTijd);
-        value.gewerkt = moment.duration(value.tijdGewerkt);
-        value.verplicht = moment.duration(value.tijdVerplicht);
+        value.gewerkt = moment.duration(value.gewerkt);
+        value.verplicht = moment.duration(value.verplicht);
         value.verschil = moment.duration(value.verschil);
         value.verschilEffectief = moment.duration(value.verschilEffectief);
 
