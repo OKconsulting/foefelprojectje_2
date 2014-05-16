@@ -112,6 +112,7 @@
     <Content Include="themes\images\ui-icons_ffd27a_256x240.png" />
     <Content Include="themes\images\ui-icons_ffffff_256x240.png" />
     <Content Include="themes\jquery-ui-1.10.4.custom.css" />
+    <Content Include="themes\jquery.mobile.datepicker.css" />
     <Content Include="themes\jquery.mobile.icons.min.css" />
     <Content Include="themes\jquery.mobile.structure-1.4.2.min.css" />
     <Content Include="themes\reset.css" />
@@ -120,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
+    <Content Include="scripts\jquery.mobile.datepicker.js" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

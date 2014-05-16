@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="./themes/style.css" />
     <link rel="stylesheet" href="./themes/jquery.mobile.icons.min.css" />
     <link rel="stylesheet" href="./themes/jquery.mobile.structure-1.4.2.min.css" />
-    <link rel="stylesheet" href="https://rawgithub.com/arschmitz/jquery-mobile-datepicker-wrapper/v0.1.1/jquery.mobile.datepicker.css">
+    <link rel="stylesheet" href="./themes/jquery.mobile.datepicker.css" />
     <script src="./scripts/jquery-1.10.2.min.js"></script>
     <script src="./scripts/jquery.mobile-1.4.2.min.js"></script>
-    <script src="https://rawgithub.com/arschmitz/jquery-mobile-datepicker-wrapper/v0.1.1/jquery.mobile.datepicker.js"></script>
+    <script src="./scripts/jquery.mobile.datepicker.js"></script>
 </head>
 
 <body class="ui-mobile-viewport ui-overlay-c" id="containerPagina">
@@ -18,7 +18,7 @@
     <div data-role="page" id="home" data-theme="b">
         <div data-role="header" class="header" data-position="fixed">
             <div class="left"><a href="#home_panel"><img src="images/menu.png" /></a></div>
-            <div class="right"><a href="#selecteerPeriode" data-role="none" data-rel="popup" data-position-to="window" onclick="loadData();"><img src="images/herladen.png" /></a></div>
+            <div class="right"><a href="#selecteerPeriode" data-role="none" data-rel="popup" data-position-to="window" onclick="loadAll();"><img src="images/herladen.png" /></a></div>
             <div class="center"><h1><a href="#home">Time.e-ok</a></h1></div>
         </div>
 
@@ -170,7 +170,7 @@
         var vandaag = moment();
 
         $(document).ready(function () {
-            loadHome();
+            loadAll();
         });
 
         function melding(bericht) {
@@ -179,7 +179,7 @@
             setTimeout(function () { $('.melding').fadeOut(); }, 3000);
         }
 
-        function loadHome() {
+        function loadAll() {
             loadData();
             loadStatistieken();
         }
