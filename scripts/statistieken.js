@@ -24,69 +24,31 @@ function invullenStatistieken() {
     $('#tabelStatistieken tr').has('td').remove();
     rijNummer = 1;
     $.each(tijdPerDag, function (index, value) {
-        value.dag = moment(value.dag);
+        value.datum = moment(value.datum);
         value.startTijd = moment(value.startTijd);
         value.stopTijd = moment(value.stopTijd);
-        value.tijdGewerkt = moment.duration(value.tijdGewerkt);
-        value.tijdVerplicht = moment.duration(value.tijdVerplicht);
-        value.tijdVerschil = moment.duration(value.tijdVerschil);
-        value.tijdVerschilEffectief = moment.duration(value.tijdVerschilEffectief);
+        value.gewerkt = moment.duration(value.tijdGewerkt);
+        value.verplicht = moment.duration(value.tijdVerplicht);
+        value.verschil = moment.duration(value.verschil);
+        value.verschilEffectief = moment.duration(value.verschilEffectief);
 
         if (value.soortLijn == "dag") {
-            voegRijToeDag(rijNummer, value.dag, value.tijdGewerkt, value.tijdVerplicht, value.tijdVerschil, value.tijdVerschilEffectief, value.startTijd, value.stopTijd);
-            rijNummer += 2;
+            voegRijToeDag(rijNummer, value);
         }
-        if (value.soortLijn == "week") {
-            voegRijToeWeek(rijNummer, value.dag, value.tijdGewerkt, value.tijdVerplicht, value.tijdVerschil, value.tijdVerschilEffectief, value.startTijd, value.stopTijd);
-            rijNummer += 1;
-        }
-        if (value.soortLijn == "maand") {
-            voegRijToeMaand(rijNummer, value.dag, value.tijdGewerkt, value.tijdVerplicht, value.tijdVerschil, value.tijdVerschilEffectief, value.startTijd, value.stopTijd);
-            rijNummer += 1;
-        }
+        rijNummer += 1;
     });
 }
 
-
-function voegRijToeDag(rijNummer, datum, gewerkt, verplicht, verschil, verschilEffectief, gestartOm, gestoptOm) {
+function voegRijToeDag(rijNummer, dag) {
+    console.log(dag);
     var row = table.insertRow(rijNummer);
     var datumElement = row.insertCell(0);
     var verplichtElement = row.insertCell(1);
     var gewerktElement = row.insertCell(2);
-    datumElement.innerHTML = ' ' + datum.format("dd DD/MM");
 
-    gewerktElement.innerHTML = moment.utc(gewerkt.valueOf()).format("HH:mm");
-    verplichtElement.innerHTML = moment.utc(verplicht.valueOf()).format("HH:mm");
-
-    var row = table.insertRow(rijNummer + 1);
-    row.className = "info";
-    var infoVanDag = row.insertCell(0);
-    infoVanDag.setAttribute("colspan", 8);
-    infoVanDag.className = "infoVanDag" + datum.date();
-    infoVanDag.style.display = "none";
-}
-
-function voegRijToeWeek(rijNummer, datum, gewerkt, verplicht, verschil, verschilEffectief, gestartOm, gestoptOm) {
-    var row = table.insertRow(rijNummer);
-    row.style.backgroundColor = "#E0E0DD";
-    var datumElement = row.insertCell(0);
-    var verplichtElement = row.insertCell(1);
-    var gewerktElement = row.insertCell(2);
-    datumElement.innerHTML = "<b>week</b>";
-    gewerktElement.innerHTML = toonTijdInUrenEnMinuten(gewerkt);
-    verplichtElement.innerHTML = toonTijdInUrenEnMinuten(verplicht);
-}
-
-function voegRijToeMaand(rijNummer, datum, gewerkt, verplicht, verschil, verschilEffectief, gestartOm, gestoptOm) {
-    var row = table.insertRow(rijNummer);
-    row.style.backgroundColor = "#E5F0F9";
-    var datumElement = row.insertCell(0);
-    var verplichtElement = row.insertCell(1);
-    var gewerktElement = row.insertCell(2);
-
-    datumElement.innerHTML = "<b>maand</b>";
-    gewerktElement.innerHTML = toonTijdInUrenEnMinuten(gewerkt);
-    verplichtElement.innerHTML = toonTijdInUrenEnMinuten(verplicht);
+    datumElement.innerHTML = dag.datum.format("dd DD/MM");
+    gewerktElement.innerHTML = moment.utc(dag.gewerkt.valueOf()).format("HH:mm");
+    verplichtElement.innerHTML = moment.utc(dag.verplicht.valueOf()).format("HH:mm");
 }
 
 function toonTijdInUrenEnMinuten(duration) {
