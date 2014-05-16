@@ -1,6 +1,6 @@
 ﻿<html class="ui-mobile">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi">
     <title>Time.e-ok</title>
     <link rel="stylesheet" href="./themes/reset.css" />
     <link rel="stylesheet" href="./themes/tijdsregistratie.css" />
@@ -172,11 +172,6 @@
         $(document).ready(function () {
             loadAll();
         });
-
-        document.addEventListener("deviceready", function () {
-            var body = document.getElementsByTagName('body')[0];
-            body.style.minHeight = window.innerHeight + 'px';
-        }, false);
 
         function melding(bericht) {
             $('.melding').text(bericht);
