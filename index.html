@@ -19,9 +19,12 @@
             <div class="melding">
             </div>
             <div id="containerLogin">
-                <input type="email" id="LoginInput" placeholder="Login" />
-                <input type="password" id="PaswoordInput" placeholder="Paswoord" />
-                <input type="button" id="inloggen" value="Inloggen" onclick="login();" />
+                <input type="email" id="loginInput" placeholder="Login" />
+                <input type="password" id="paswoordInput" placeholder="Paswoord" />
+                <input type="button" id="inloggen" value="Inloggen" data-role="button" />
+            </div>
+            <div id="containerLoading">
+                <img src="images/gif-load.gif" />
             </div>
         </div>
         <div data-role="footer" data-position="fixed">
@@ -30,6 +33,7 @@
     </div>
     <script src="scripts/database-connection.js"></script>
     <script charset="UTF-8">
+        var timeout;
         $(document).ready(function () {
             var mdwID = window.localStorage.getItem("mdwID");
 
@@ -37,13 +41,19 @@
                 window.localStorage.setItem("mdwID", mdwID);
                 window.location.href = "./home.html#home";
             }
+
         });
 
-        $('#LoginInput, #PaswoordInput').focus(function () {
+        $("#inloggen").on('click', function () {
+            $('#containerLogin').fadeOut();
+            $('#containerLoading').fadeIn();
+            login();
+        });
+
+        $('#loginInput, #paswoordInput').focus(function () {
             $('[data-role=footer]').css("display", "none");
         });
 
-        var timeout;
         function melding(bericht) {
             $('.melding').text(bericht);
             $('.melding').fadeIn();
@@ -52,7 +62,8 @@
         }
 
         function login() {
-            var user = { UserName: $("#LoginInput").val(), Paswoord: $("#PaswoordInput").val(), MedewerkerID: 0, Role: "" };
+            console.log('login');
+            var user = { UserName: $("#loginInput").val(), Paswoord: $("#paswoordInput").val(), MedewerkerID: 0, Role: "" };
 
             $.ajax({
                 url: url + 'api/user/login',
@@ -65,7 +76,8 @@
                     window.location.href = "./home.html#home";
                 },
                 error: function (e) {
-                    console.log(e);
+                    $('#containerLogin').fadeIn();
+                    $('#containerLoading').fadeOut();
                     if (e.responseJSON == "login") {
                         melding("Deze login heeft geen toegang tot de applicatie.");
                     } else if (e.responseJSON == "wachtwoord") {
