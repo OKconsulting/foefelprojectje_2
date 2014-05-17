@@ -45,8 +45,8 @@
         });
 
         $("#inloggen").on('click', function () {
-            $('#containerLogin').fadeOut();
-            $('#containerLoading').fadeIn();
+            $('#containerLogin').css('display', 'none');
+            $('#containerLoading').css('display', 'block');
             login();
         });
 
@@ -76,8 +76,8 @@
                     window.location.href = "./home.html#home";
                 },
                 error: function (e) {
-                    $('#containerLogin').fadeIn();
-                    $('#containerLoading').fadeOut();
+                    $('#containerLogin').css('display', 'block');
+                    $('#containerLoading').css('display', 'none');
                     if (e.responseJSON == "login") {
                         melding("Deze login heeft geen toegang tot de applicatie.");
                     } else if (e.responseJSON == "wachtwoord") {
