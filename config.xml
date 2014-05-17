@@ -17,7 +17,7 @@
   <gap:splash src="/icons/ios/xlarge.png" gap:platform="ios" width="640" height="1136" />
 
   <icon src="/icons/android/icon.png" gap:platform="android"/>
-  <gap:splash src="/icons/android/splash.9.png" gap:platform="android" />
+  <gap:splash src="/icons/android/splash.png" gap:platform="android" />
   <icon src="/icons/android/icon-hdpi.png" gap:density="hdpi" gap:platform="android" />
   <icon src="/icons/android/icon-ldpi.png" gap:density="ldpi" gap:platform="android" />
   <icon src="/icons/android/icon-mdpi.png" gap:density="mdpi" gap:platform="android" />
