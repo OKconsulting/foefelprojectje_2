@@ -24,7 +24,7 @@
         <div data-role="content" class="ui-content" role="main">
             <div class="melding">
             </div>
-            <a href="#popupKeuze" id="popupKeuzeKlik" data-role="none" data-rel="popup" data-position-to="window" style="display:none;">test</a>
+            <a href="#popupKeuze" id="popupKeuzeKlik" data-role="none" data-rel="popup" data-position-to="window">test</a>
             <div data-role="popup" id="popupKeuze" class="ui-content" data-theme="a">
                 <div id="optieWerkend">
                     <form>
@@ -77,8 +77,8 @@
                     <div id="containerVergeten">
                         <form>
                             <p></p>
-                            <input type="text" id="vergeten" class="vergeten tijd2 textbox-small" /><br />
-                            <input type="submit" value="Vergeten" class="knop stop" onclick="post('STOP', 'stopVergeten')" />
+                            <input type="text" class="tijd2 textbox-small" id="vergetenKeuze" data-role="none" /><br />
+                            <input type="button" value="Stop op ingevulde uur" class="knop stop" onclick="post('STOP', 'stopVergeten')" />
                             <textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
                         </form>
                     </div>
