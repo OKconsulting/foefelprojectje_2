@@ -98,7 +98,7 @@ function post(type, vergeten) {
     });
 
     if (vergeten == "stopVergetenKeuze") {
-        opmerking = "De medewerker heeft vergeten uit te checken.";
+        opmerking = "de medewerker heeft vergeten uit te checken";
         tijdstempelVroeger = moment(tijdLogs[0]['tijdstempel']);
         tijdstempel = moment(tijdLogs[0]['tijdstempel']);
 
@@ -120,7 +120,7 @@ function post(type, vergeten) {
     }
 
     if (vergeten == "stopVergeten") {
-        opmerking = "De medewerker heeft vergeten uit te checken.";
+        opmerking = "de medewerker heeft vergeten uit te checken";
         tijdstempelVroeger = moment(tijdLogs[0]['tijdstempel']);
         tijdstempel = moment(tijdLogs[0]['tijdstempel']);
 

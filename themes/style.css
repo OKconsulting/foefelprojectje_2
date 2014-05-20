@@ -43,7 +43,7 @@ b {
     }
 
         .header .left a {
-            padding: 13px 0px 11px 12px !important;
+            padding: 13px 0 11px 12px !important;
             color: white;
             width: 50px;
             display: inline-block;
