@@ -80,7 +80,7 @@ b {
 
 .menu li a {
     display: block;
-    padding: 20px 0px 20px 20px;
+    padding: 15px 0 15px 15px;
     border-bottom: 2px solid #e5e5e5;
     text-decoration: none;
     font-weight: normal;
@@ -102,7 +102,9 @@ b {
 [data-role=footer] {
     margin-bottom: 20px;
 }
-
+[data-role=panel] {
+    margin-top: 51px;
+}
 /*Oorspronkelijk project*/
 #containerStart, #containerStop, #containerKeuze, #containerVergeten, #commentaar {
     display: none;
