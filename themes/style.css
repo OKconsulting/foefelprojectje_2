@@ -104,7 +104,7 @@ b {
 }
 
 /*Oorspronkelijk project*/
-#containerStart, #containerStop, #containerKeuze, #containerVergeten, #commentaar, #optieWerkend, #optieVergeten {
+#containerStart, #containerStop, #containerKeuze, #containerVergeten, #commentaar {
     display: none;
 }
 

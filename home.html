@@ -13,7 +13,6 @@
 </head>
 
 <body class="ui-mobile-viewport ui-overlay-c" id="containerPagina">
-
     <div data-role="page" id="home" data-theme="b">
         <div data-role="header" class="header" data-position="fixed">
             <div class="left"><a href="#home_panel"><img src="images/menu.png" /></a></div>
@@ -24,8 +23,9 @@
         <div data-role="content" class="ui-content" role="main">
             <div class="melding">
             </div>
-            <a href="#popupKeuze" id="popupKeuzeKlik" data-role="none" data-rel="popup" data-position-to="window">test</a>
-            <div data-role="popup" id="popupKeuze" class="ui-content" data-theme="a">
+
+
+            <div data-role="popup" id="popupWerkend" class="ui-content" data-theme="a">
                 <div id="optieWerkend">
                     <form>
                         <p>Gelieve te bevestigen dat u doorgewerkt hebt deze nacht.</p>
@@ -35,6 +35,9 @@
                         <textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
                     </form>
                 </div>
+            </div>
+
+            <div data-role="popup" id="popupVergeten" class="ui-content" data-theme="a">
                 <div id="optieVergeten">
                     <form>
                         <p></p>
@@ -46,6 +49,7 @@
                     </form>
                 </div>
             </div>
+
 
             <div class="time">
                 <div class="containerTime">
@@ -69,15 +73,19 @@
                     <div id="containerKeuze">
                         <form>
                             <p></p>
-                            <input type="button" value="Ik ben het vergeten" class="knop stop" onclick="popup('stopVergeten')" />
-                            <input type="button" value="Ik heb doorgewerekt" class="knop stop" onclick="popup('stopWerkend')" />
+                            <a href="#popupVergeten" data-rel="popup" data-position-to="window" data-role="none">
+                                <input type="button" value="Ik ben het vergeten" class="knop stop" />
+                            </a>
+                            <a href="#popupWerkend" data-rel="popup" data-position-to="window" data-role="none">
+                                <input type="button" value="Ik heb doorgewerekt" class="knop stop" />
+                            </a>
                         </form>
                     </div>
 
                     <div id="containerVergeten">
                         <form>
                             <p></p>
-                            <input type="text" class="tijd2 textbox-small" id="vergetenKeuze" data-role="none" /><br />
+                            <input type="text" class="tijd2 textbox-small" id="vergeten" data-role="none" /><br />
                             <input type="button" value="Stop op ingevulde uur" class="knop stop" onclick="post('STOP', 'stopVergeten')" />
                             <textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
                         </form>
