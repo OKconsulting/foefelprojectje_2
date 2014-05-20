@@ -1,19 +1,9 @@
 ﻿var timer;
-function popup(optie) {
-    $('#optieVergeten').css("display", "none");
-    $('#optieWerkend').css("display", "none");
-    $('#popupKeuzeKlik').click();
-    if (optie == 'stopVergeten') {
-        $('#optieVergeten').fadeIn();
-    } else {
-        $('#optieWerkend').fadeIn();
-    }
-}
 
 document.addEventListener("deviceready", getLocatie, false);
 
 function loadData() {
-    $('#containerStart, #containerStop, #containerKeuze').css('display', 'none');
+    $('#containerStart, #containerStop, #containerKeuze, #containerVergeten').css('display', 'none');
 
     $.ajax({
         datatype: 'json',
