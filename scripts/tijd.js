@@ -144,7 +144,7 @@ function post(type, vergeten) {
     }
 
     if (vergeten == "stopWerkend") {
-        opmerking = "De medewerker heeft doorgewerkt tot de volgende dag.";
+        opmerking = "de medewerker heeft doorgewerkt tot de volgende dag";
         nacht = true;
     }
 
@@ -178,7 +178,7 @@ function getLocatie() {
         };
 
         var geoErrorHandler = function (error) {
-            opmerkingLocatie = "de medewerker heeft geweigert zijn geolocatie mee te geven.";
+            opmerkingLocatie = "de medewerker heeft geweigert zijn geolocatie mee te geven";
             melding("U heeft uw browser niet toegelaten om de locatie op te halen");
         };
 
@@ -189,7 +189,7 @@ function getLocatie() {
 
         navigator.geolocation.getCurrentPosition(geoSuccessHandler, geoErrorHandler, positionOptions);
     } else {
-        opmerkingLocatie = "de medewerker zijn toestel ondersteund geolocatie niet.";
+        opmerkingLocatie = "de medewerker zijn toestel ondersteund geolocatie niet";
         melding("uw browser ondersteund locatievoorziening niet");
     }
 }
