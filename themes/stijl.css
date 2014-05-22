@@ -102,6 +102,7 @@ b {
 [data-role=footer] {
     margin-bottom: 20px;
 }
+
 [data-role=panel] {
     margin-top: 51px;
 }
@@ -138,9 +139,9 @@ form {
 
 .melding {
     position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
+    top: 51px;
+    left: 0;
+    right: 0;
     display: none;
     background-color: #FF5757;
     color: white;
@@ -213,8 +214,9 @@ p {
         zoom: 1;
     }
 
-textarea {
-    height: 50px;
+.commentaar {
+    height: 60px;
+    display: block;
     padding: 5px;
     max-width: 200px !important;
     display: block;
@@ -222,7 +224,7 @@ textarea {
     margin-right: auto !important;
 }
 
-.containerTime input[type=button], #optieWerkend input[type=button] #optieVergeten input[type=button] {
+.containerTime input[type=button] {
     width: 200px !important;
 }
 

@@ -120,7 +120,7 @@
     <Content Include="themes\jquery.mobile.icons.min.css" />
     <Content Include="themes\jquery.mobile.structure-1.4.2.min.css" />
     <Content Include="themes\reset.css" />
-    <Content Include="themes\style.css" />
+    <Content Include="themes\stijl.css" />
     <Content Include="themes\tijdsregistratie.css" />
   </ItemGroup>
   <ItemGroup>

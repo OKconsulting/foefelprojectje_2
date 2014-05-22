@@ -1,9 +1,19 @@
 ﻿var timer;
+function popup(situatie) {
+    $('.containerTime > div').css('display', 'none');
+
+    if (situatie == 'vergeten') {
+        $('#containerKeuzeVergeten').fadeIn();
+    } else {
+        $('#containerKeuzeDoorgewerkt').fadeIn();
+    }
+}
 
 document.addEventListener("deviceready", getLocatie, false);
 
 function loadData() {
-    $('#containerStart, #containerStop, #containerKeuze, #containerVergeten').css('display', 'none');
+    $('.containerTime > div').css('display', 'none');
+    $('.commentaar').val('');
 
     $.ajax({
         datatype: 'json',
@@ -36,8 +46,8 @@ function bepaalSituatie() {
             //dit zal enkel gebeuren als ik in de controller de tijdLog van de vorige dag heb toegevoegt.
             $('#containerKeuze').find("p").html("Uw laatste log dateert van <b>" + tijdLogs[0]["tijdstempel"].format("LLLL") + "</b>. <br> Bent u nog aan het werken of bent u vergeten uit te checken?");
             $('#containerKeuze').fadeIn();
-            $('#optieVergeten').find("p").html("Uw laatste log dateert van <b>" + tijdLogs[0]["tijdstempel"].format("LLLL") + "</b>. <br> Tot hoe laat heeft u gewerkt op deze dag?");
-            $('#optieWerkend').find("p").html("Gelieve te bevestigen dat u aan het werk bent sinds<br> <b>" + tijdLogs[0]["tijdstempel"].format("LLLL") + "</b>");
+            $('#containerKeuzeVergeten').find("p").html("Uw laatste log dateert van <b>" + tijdLogs[0]["tijdstempel"].format("LLLL") + "</b>. <br> Tot hoe laat heeft u gewerkt op deze dag?");
+            $('#containerKeuzeDoorgewerkt').find("p").html("Gelieve te bevestigen dat u aan het werk bent sinds<br> <b>" + tijdLogs[0]["tijdstempel"].format("LLLL") + "</b>");
             console.log(tijdLogs[0]);
         } else if (vandaag.diff(tijdLogs[0]['tijdstempel'], 'day') >= 1 && tijdLogs[0]['type'] == 'START') {
             $('#containerVergeten').find("p").html("Uw laatste log dateert van <b>" + tijdLogs[0]["tijdstempel"].format("LLLL") + "</b>. <br> Tot hoe laat heeft u gewerkt op deze dag?");
@@ -81,13 +91,15 @@ function post(type, vergeten) {
     var tijdstempelVroeger;
     var tijdstempel = moment;
     vandaag = moment();
+    commentaar = "", opmerking = "", opmerkingLocatie = "", latitudeLongitude = "";
+
     getLocatie();
 
     $('.commentaar').each(function () {
         commentaar += $(this).val();
     });
 
-    if (vergeten == "stopVergetenKeuze") {
+    if (vergeten == "stopKeuzeVergeten") {
         opmerking = "de medewerker heeft vergeten uit te checken";
         tijdstempelVroeger = moment(tijdLogs[0]['tijdstempel']);
         tijdstempel = moment(tijdLogs[0]['tijdstempel']);
@@ -133,9 +145,13 @@ function post(type, vergeten) {
         }
     }
 
-    if (vergeten == "stopWerkend") {
+    if (vergeten == "stopKeuzeWerkend") {
         opmerking = "de medewerker heeft doorgewerkt tot de volgende dag";
         nacht = true;
+    }
+
+    if (latitudeLongitude != "" && opmerkingLocatie == "de medewerker heeft geweigert zijn geolocatie mee te geven") {
+        opmerkingLocatie = "";
     }
 
     if (latitudeLongitude == "" && opmerkingLocatie == "") {

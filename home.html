@@ -3,7 +3,7 @@
     <title>Time.e-ok</title>
     <link rel="stylesheet" href="./themes/reset.css" />
     <link rel="stylesheet" href="./themes/tijdsregistratie.css" />
-    <link rel="stylesheet" href="./themes/style.css" />
+    <link rel="stylesheet" href="./themes/stijl.css" />
     <link rel="stylesheet" href="./themes/jquery.mobile.icons.min.css" />
     <link rel="stylesheet" href="./themes/jquery.mobile.structure-1.4.2.min.css" />
     <link rel="stylesheet" href="./themes/jquery.mobile.datepicker.css" />
@@ -22,32 +22,6 @@
 
         <div data-role="content" class="ui-content" role="main">
             <div class="melding">
-            </div>
-
-
-            <div data-role="popup" id="popupWerkend" class="ui-content" data-theme="a">
-                <div id="optieWerkend">
-                    <form>
-                        <p>Gelieve te bevestigen dat u doorgewerkt hebt deze nacht.</p>
-                        <a data-rel="back">
-                            <input type="button" value="Ik heb doorgewerkt" class="knop stop" onclick="post('STOP', 'stopWerkend')" />
-                        </a>
-                        <textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
-                    </form>
-                </div>
-            </div>
-
-            <div data-role="popup" id="popupVergeten" class="ui-content" data-theme="a">
-                <div id="optieVergeten">
-                    <form>
-                        <p></p>
-                        <input type="text" class="tijd2 textbox-small" id="vergetenKeuze" data-role="none" /><br />
-                        <a data-rel="back">
-                            <input type="button" value="Stop op ingevulde uur" class="knop stop" onclick="post('STOP', 'stopVergetenKeuze')" />
-                        </a>
-                        <textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
-                    </form>
-                </div>
             </div>
 
             <div class="time">
@@ -69,18 +43,6 @@
                         </form>
                     </div>
 
-                    <div id="containerKeuze">
-                        <form>
-                            <p></p>
-                            <a href="#popupVergeten" data-rel="popup" data-position-to="window" data-role="none">
-                                <input type="button" value="Ik ben het vergeten" class="knop stop" />
-                            </a>
-                            <a href="#popupWerkend" data-rel="popup" data-position-to="window" data-role="none">
-                                <input type="button" value="Ik heb doorgewerekt" class="knop stop" />
-                            </a>
-                        </form>
-                    </div>
-
                     <div id="containerVergeten">
                         <form>
                             <p></p>
@@ -89,10 +51,39 @@
                             <textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
                         </form>
                     </div>
+
+                    <div id="containerKeuze">
+                        <form>
+                            <p></p>
+                            <a onclick="popup('vergeten');">
+                                <input type="button" value="Ik ben het vergeten" class="knop stop" />
+                            </a>
+                            <a onclick="popup('doorgewerkt');">
+                                <input type="button" value="Ik heb doorgewerkt" class="knop stop" />
+                            </a>
+                        </form>
+                    </div>
+
+                    <div id="containerKeuzeVergeten">
+                        <form>
+                            <p></p>
+                            <input type="text" class="tijd2 textbox-small" id="vergetenKeuze" data-role="none" /><br />
+                            <input type="button" value="Stop op ingevulde uur" class="knop stop" onclick="post('STOP', 'stopKeuzeVergeten')" />
+                            <textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
+                        </form>
+                    </div>
+
+                    <div id="containerKeuzeDoorgewerkt">
+                        <form>
+                            <p>Gelieve te bevestigen dat u doorgewerkt hebt deze nacht.</p>
+                            <input type="button" value="Ik heb doorgewerkt" class="knop stop" onclick="post('STOP', 'stopKeuzeWerkend')" />
+                            <textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>
-
 
         <div data-role="panel" id="home_panel" data-position="left" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-left ui-panel-display-reveal ui-body-b ui-panel-animate ui-panel-open">
             <div class="ui-panel-inner">
@@ -157,7 +148,7 @@
     <script src="scripts/jquery.inputmask.js"></script>
     <script src="scripts/tijd.js"></script>
     <script src="scripts/statistieken.js"></script>
-    <script src="cordova.js"></script>
+    <!--<script src="cordova.js"></script>-->
     <script charset="UTF-8">
         var mdwID = window.localStorage.getItem("mdwID");
         //home
