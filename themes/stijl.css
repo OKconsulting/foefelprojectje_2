@@ -156,7 +156,8 @@ p {
 }
 
 .textbox-small {
-    width: 50px !important;
+    width: 100px !important;
+    text-align:center;
 }
 
 .time {
@@ -170,8 +171,6 @@ p {
     width: 300px;
     height: 286px;
 }
-
-
 
     .containerTime #tijdAanHetWerk {
         font-size: 18px;
