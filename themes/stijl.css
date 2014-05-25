@@ -109,7 +109,7 @@ b {
 
 #load-statistieken {
     margin: 25px auto;
-    width: 100px;
+    width: 32px;
 }
 
 .hasDatepicker {
@@ -159,6 +159,10 @@ form {
     text-align: center;
     z-index: 1;
     font-size: 14px;
+}
+
+#login .melding {
+    top: 0;
 }
 
 p {
