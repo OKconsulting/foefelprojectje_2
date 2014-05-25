@@ -80,6 +80,7 @@
     <Content Include="icons\ios\large.png" />
     <Content Include="icons\ios\small.png" />
     <Content Include="icons\ios\xlarge.png" />
+    <Content Include="images\load.gif" />
     <Content Include="images\gif-load.gif" />
     <Content Include="images\herladen.png" />
     <Content Include="images\home.png" />

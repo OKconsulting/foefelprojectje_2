@@ -13,6 +13,7 @@
         success: function (data) {
             tijdPerDag = data;
             invullenStatistieken();
+            $('#load-statistieken').hide();
         },
         error: function (e) {
             melding("Voor deze periode zijn de statistieken niet kunnen opgehaald worden.");
