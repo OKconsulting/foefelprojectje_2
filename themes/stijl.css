@@ -126,7 +126,7 @@ b {
 }
 
 /*Oorspronkelijk project*/
-#containerStart, #containerStop, #containerKeuze, #containerVergeten, #commentaar, .containerTime {
+#containerStart, #containerStop, #containerKeuze, #containerVergeten, #commentaar, #containerTime {
     display: none;
 }
 
@@ -245,7 +245,7 @@ p {
     margin-right: auto !important;
 }
 
-.containerTime input[type=button] {
+#containerTime input[type=button] {
     width: 200px !important;
 }
 
