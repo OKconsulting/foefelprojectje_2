@@ -16,7 +16,7 @@
     <div data-role="page" id="home" data-theme="b">
         <div data-role="header" class="header" data-position="fixed">
             <div class="left"><a href="#home_panel"><img src="images/menu.png" /></a></div>
-            <div class="right"><a href="#selecteerPeriode" data-role="none" data-rel="popup" data-position-to="window" onclick="loadAll();"><img src="images/herladen.png" /></a></div>
+            <div class="right"><a href="#selecteerPeriode" data-role="none" data-rel="popup" data-position-to="window" onclick="isVerplicht();"><img src="images/herladen.png" /></a></div>
             <div class="center"><h1><a href="#home">Time.e-ok</a></h1></div>
         </div>
 
@@ -27,7 +27,7 @@
                 <div id="containerLoad">
                     <img src="images/load.gif" alt="" />
                 </div>
-                <div class="containerTime">
+                <div id="containerTime">
                     <div id="containerStart">
                         <form>
                             <input type="button" value="Start" class="knop start" onclick="post('START', 'start')" />

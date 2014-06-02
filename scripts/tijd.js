@@ -1,6 +1,6 @@
 ﻿var timer;
 function popup(situatie) {
-    $('.containerTime > div').css('display', 'none');
+    $('#containerTime > div').css('display', 'none');
 
     if (situatie == 'vergeten') {
         $('#containerKeuzeVergeten').fadeIn();
@@ -10,7 +10,8 @@ function popup(situatie) {
 }
 
 function isVerplicht() {
-    $('.containerTime').hide();
+    $("#containerLoad").show();
+    $('#containerTime').hide();
     $.ajax({
         datatype: 'json',
         url: url + "/api/TijdLog/GetIsLocatieVerplicht/" + mdwID,
@@ -20,7 +21,7 @@ function isVerplicht() {
             loadData();
             getLocatie();
             if (isLocatieVerplicht == 'false') {
-                $('.containerTime').show();
+                $('#containerTime').show();
             }
         },
         error: function (e) {
@@ -31,7 +32,7 @@ function isVerplicht() {
 }
 
 function loadData() {
-    $('.containerTime > div').hide();
+    $('#containerTime > div').hide();
     $('.commentaar').val('');
 
     $.ajax({
@@ -192,7 +193,7 @@ function getLocatie() {
     if (navigator.geolocation) {
         var geoSuccessHandler = function (position) {
             latitudeLongitude = position.coords.latitude + ";" + position.coords.longitude;
-            $('.containerTime').show();
+            $('#containerTime').show();
         };
 
         var geoErrorHandler = function (error) {
