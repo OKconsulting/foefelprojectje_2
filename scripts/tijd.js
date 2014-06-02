@@ -42,7 +42,7 @@ function loadData() {
             $.each(tijdLogs, function (index, value) {
                 value['tijdstempel'] = moment(value['tijdstempel']);
             })
-
+            $("#containerLoad").hide();
             clearInterval(timer);
             bepaalSituatie();
         },
@@ -198,6 +198,7 @@ function getLocatie() {
             if (isLocatieVerplicht != 'false') {
                 melding("U heeft gewijgerd de locatie mee te geven. <br> Gelieve de handleiding te raadplegen over hoe u dit kunt toelaten.");
             };
+            $("#containerLoad").hide();
         };
 
         var positionOptions = {

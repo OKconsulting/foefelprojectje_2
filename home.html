@@ -23,8 +23,10 @@
         <div data-role="content" class="ui-content" role="main">
             <div class="melding">
             </div>
-
             <div class="time">
+                <div id="containerLoad">
+                    <img src="images/load.gif" alt="" />
+                </div>
                 <div class="containerTime">
                     <div id="containerStart">
                         <form>
@@ -179,6 +181,7 @@
         document.addEventListener("resume", isVerplicht, false);
 
         function loadAll() {
+            $("#containerLoad").show();
             isVerplicht();
             loadStatistieken();
         }
