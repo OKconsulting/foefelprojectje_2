@@ -43,7 +43,6 @@ function loadData() {
             $.each(tijdLogs, function (index, value) {
                 value['tijdstempel'] = moment(value['tijdstempel']);
             })
-            $("#containerLoad").hide();
             clearInterval(timer);
             bepaalSituatie();
         },
@@ -58,6 +57,7 @@ function bepaalSituatie() {
     //de eerste value in de array van tijdlogs zal het tijdstip van gisteren zijn indien vergeten of het tijdstip van vandaag als het niet vergeten is
     vandaag = moment();
     var tijdAanHetWerk = moment(0);
+    $("#containerLoad").hide();
 
     if (tijdLogs.length == 0) {
         $('#start').fadeIn();
