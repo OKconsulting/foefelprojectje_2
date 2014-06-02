@@ -132,6 +132,9 @@
             <div id="load-statistieken">
                 <img src="images/load.gif" alt="" />
             </div>
+            <div id="legende">
+                De kleurencodes kunnen nagekeken worden op de website.
+            </div>
         </div>
 
         <div data-role="panel" id="statistieken_panel" data-position="left" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-left ui-panel-display-reveal ui-body-b ui-panel-animate ui-panel-open">
@@ -156,7 +159,6 @@
         var mdwID = window.localStorage.getItem("mdwID");
         //home
         var tijdLogs;
-        var vandaag;
         var latitudeLongitude = "", commentaar = "", opmerking = "", opmerkingLocatie = "", opmerkingHR = "", nacht = false;
         var tijdAanHetWerk = moment(0);
         moment.lang('nl');
@@ -169,19 +171,22 @@
         var rijNummer = 1;
         var vandaag = moment();
 
-        $(document).ready(function () {
-            loadAll();
-        });
+        //$(document).ready(function () {
+        //    loadAll();
+        //});
 
-        function melding(bericht) {
-            $('.melding').text(bericht);
-            $('.melding').fadeIn();
-            setTimeout(function () { $('.melding').fadeOut(); }, 3000);
-        }
+        document.addEventListener("deviceready", loadAll, false);
+        document.addEventListener("resume", isVerplicht, false);
 
         function loadAll() {
-            loadData();
+            isVerplicht();
             loadStatistieken();
+        }
+
+        function melding(bericht) {
+            $('.melding').html(bericht);
+            $('.melding').fadeIn();
+            setTimeout(function () { $('.melding').fadeOut(); }, 3000);
         }
 
         function logout() {

@@ -112,12 +112,21 @@ b {
     width: 32px;
 }
 
+#legende {
+    margin-top: 15px;
+    display: none;
+    text-align: center;
+    width: 90%;
+    background-color: #FFC954;
+    padding: 5px 5%;
+}
+
 .hasDatepicker {
     max-width: 100% !important;
 }
 
 /*Oorspronkelijk project*/
-#containerStart, #containerStop, #containerKeuze, #containerVergeten, #commentaar {
+#containerStart, #containerStop, #containerKeuze, #containerVergeten, #commentaar, .containerTime {
     display: none;
 }
 

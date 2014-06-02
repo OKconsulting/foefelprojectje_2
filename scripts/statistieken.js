@@ -14,6 +14,7 @@
             tijdPerDag = data;
             invullenStatistieken();
             $('#load-statistieken').hide();
+            $('#legende').show();
         },
         error: function (e) {
             melding("Voor deze periode zijn de statistieken niet kunnen opgehaald worden.");
@@ -46,7 +47,15 @@ function voegRijToeDag(rijNummer, dag) {
     var verplichtElement = row.insertCell(1);
     var gewerktElement = row.insertCell(2);
 
+    if (dag.verlof == "feestdag" || dag.verlof == "collectief" || dag.verlof == "verlofdag") {
+        row.style.backgroundColor = dag.prestatieKleur;
+        row.title = dag.prestatieOmschrijving;
+    }
+
     datumElement.innerHTML = dag.datum.format("dd DD/MM");
+    if (dag.datum.day() == vandaag.day() && dag.datum.week() == vandaag.week() && dag.datum.month() == vandaag.month() && dag.datum.year() == vandaag.year()) {
+        datumElement.style.backgroundColor = "#9ECBFF";
+    }
     gewerktElement.innerHTML = moment.utc(dag.gewerkt.valueOf()).format("HH:mm");
     verplichtElement.innerHTML = moment.utc(dag.verplicht.valueOf()).format("HH:mm");
 }

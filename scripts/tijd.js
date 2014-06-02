@@ -9,10 +9,28 @@ function popup(situatie) {
     }
 }
 
-document.addEventListener("deviceready", getLocatie, false);
+function isVerplicht() {
+    $('.containerTime').hide();
+    $.ajax({
+        datatype: 'json',
+        url: url + "/api/TijdLog/GetIsLocatieVerplicht/" + mdwID,
+        data: null,
+        success: function (data) {
+            isLocatieVerplicht = data.verplicht;
+            loadData();
+            getLocatie();
+            if (isLocatieVerplicht == 'false') {
+                $('.containerTime').show();
+            }
+        },
+        error: function (e) {
+            melding("De data is niet opgehaald, gelieve de pagina te herladen.");
+        }
+    });
+}
 
 function loadData() {
-    $('.containerTime > div').css('display', 'none');
+    $('.containerTime > div').hide();
     $('.commentaar').val('');
 
     $.ajax({
@@ -29,7 +47,7 @@ function loadData() {
             bepaalSituatie();
         },
         error: function (e) {
-            melding("De data is niet opgehaald.");
+            melding("De data is niet opgehaald, gelieve de pagina te herladen.");
         }
     });
 }
@@ -42,28 +60,16 @@ function bepaalSituatie() {
     if (tijdLogs.length == 0) {
         $('#start').fadeIn();
     } else {
-        if (vandaag.diff(tijdLogs[0]['tijdstempel'], 'day') == 0 && tijdLogs[0]['type'] == 'START') {
-            //dit zal enkel gebeuren als ik in de controller de tijdLog van de vorige dag heb toegevoegt.
-            $('#containerKeuze').find("p").html("Uw laatste log dateert van <b>" + tijdLogs[0]["tijdstempel"].format("LLLL") + "</b>. <br> Bent u nog aan het werken of bent u vergeten uit te checken?");
-            $('#containerKeuze').fadeIn();
-            $('#containerKeuzeVergeten').find("p").html("Uw laatste log dateert van <b>" + tijdLogs[0]["tijdstempel"].format("LLLL") + "</b>. <br> Tot hoe laat heeft u gewerkt op deze dag?");
-            $('#containerKeuzeDoorgewerkt').find("p").html("Gelieve te bevestigen dat u aan het werk bent sinds<br> <b>" + tijdLogs[0]["tijdstempel"].format("LLLL") + "</b>");
-            console.log(tijdLogs[0]);
-        } else if (vandaag.diff(tijdLogs[0]['tijdstempel'], 'day') >= 1 && tijdLogs[0]['type'] == 'START') {
-            $('#containerVergeten').find("p").html("Uw laatste log dateert van <b>" + tijdLogs[0]["tijdstempel"].format("LLLL") + "</b>. <br> Tot hoe laat heeft u gewerkt op deze dag?");
-            $('#containerVergeten').fadeIn();
-        } else {
-            //de laatste waarde in de array tijdLogs is de startdatum
-            //de eerste waarde in de array tijdLogs is de voorgaande tijdLog
+        var laatsteTijdLog = tijdLogs[0];
+        if (laatsteTijdLog.type == "STOP" || vandaag.day() == laatsteTijdLog.tijdstempel.day() && vandaag.week() == laatsteTijdLog.tijdstempel.week() && vandaag.month() == laatsteTijdLog.tijdstempel.month() && vandaag.year() == laatsteTijdLog.tijdstempel.year()) {
             if (tijdLogs[1] == null || tijdLogs[1]['type'] == 'STOP') {
                 $('#containerStart').fadeIn();
             } else {
                 $('#containerStop').fadeIn();
-
                 for (var i = 0; i < tijdLogs.length; i = i + 2) {
                     tijdAanHetWerk.add(tijdLogs[i]['tijdstempel'].diff(tijdLogs[i + 1]['tijdstempel']));
                 }
-
+                tijdAanHetWerk = tijdAanHetWerk.valueOf() - 3600000;
                 $('#tijdAanHetWerk').text(moment(tijdAanHetWerk).format("H:mm:ss"));
 
                 $("#progressbar").progressbar({
@@ -73,7 +79,7 @@ function bepaalSituatie() {
 
                 $("#progressbarLabel").text(moment.utc(moment.duration(tijdLogs[0]['commentaar']).valueOf()).format("HH:mm:ss"));
 
-                timer = setInterval(function () {
+                setInterval(function () {
                     tijdAanHetWerk += 1000;
                     $('#tijdAanHetWerk').text(moment(tijdAanHetWerk).format("H:mm:ss"));
 
@@ -83,6 +89,17 @@ function bepaalSituatie() {
                     });
                 }, 1000);
             }
+        } else {
+            var verschil = moment.duration(vandaag.diff(laatsteTijdLog.tijdstempel));
+            if (verschil.days() == 0 && verschil.hours() < 8) {
+                $('#containerKeuze').find("p").html("Uw laatste log dateert van <b>" + tijdLogs[0]["tijdstempel"].format("LLLL") + "</b>. <br> Bent u nog aan het werken of bent u vergeten uit te checken?");
+                $('#containerKeuze').fadeIn();
+                $('#optieVergeten').find("p").html("Uw laatste log dateert van <b>" + tijdLogs[0]["tijdstempel"].format("LLLL") + "</b>. <br> Tot hoe laat heeft u gewerkt op deze dag?");
+                $('#optieWerkend').find("p").html("Gelieve te bevestigen dat u aan het werk bent sinds<br> <b>" + tijdLogs[0]["tijdstempel"].format("LLLL") + "</b>");
+                return;
+            }
+            $('#containerVergeten').find("p").html("Uw laatste log dateert van <b>" + tijdLogs[0]["tijdstempel"].format("LLLL") + "</b>. <br> Tot hoe laat heeft u gewerkt op deze dag?");
+            $('#containerVergeten').fadeIn();
         }
     }
 }
@@ -91,9 +108,7 @@ function post(type, vergeten) {
     var tijdstempelVroeger;
     var tijdstempel = moment;
     vandaag = moment();
-    commentaar = "", opmerking = "", opmerkingLocatie = "", latitudeLongitude = "";
-
-    getLocatie();
+    commentaar = "", opmerking = "", opmerkingHR = "";
 
     $('.commentaar').each(function () {
         commentaar += $(this).val();
@@ -105,7 +120,6 @@ function post(type, vergeten) {
         tijdstempel = moment(tijdLogs[0]['tijdstempel']);
 
         var tijd = $('#vergetenKeuze').val();
-        console.log()
         if (parseInt(tijd.substring(0, 2)) >= 24 || parseInt(tijd.substring(2, 4)) > 60) {
             melding("Geen geldig tijdstip opgegeven");
             return;
@@ -114,7 +128,7 @@ function post(type, vergeten) {
         tijdstempel = tijdstempel.hour(tijd.substring(0, 2));
         tijdstempel = tijdstempel.minute(tijd.substring(2, 4));
         tijdstempel = tijdstempel.second(0);
-
+        opmerkingHR = tijd.substring(0, 2) + ":" + tijd.substring(2, 4);
         if (tijdstempel < tijdstempelVroeger) {
             melding("De tijd moet later dan " + tijdstempelVroeger.hour() + "u" + tijdstempelVroeger.minute() + " zijn.");
             return;
@@ -127,7 +141,6 @@ function post(type, vergeten) {
         tijdstempel = moment(tijdLogs[0]['tijdstempel']);
 
         var tijd = $('#vergeten').val();
-        console.log()
         if (parseInt(tijd.substring(0, 2)) >= 24 || parseInt(tijd.substring(2, 4)) > 60) {
             melding("Geen geldig tijdstip opgegeven");
             return;
@@ -136,8 +149,7 @@ function post(type, vergeten) {
         tijdstempel = tijdstempel.hour(tijd.substring(0, 2));
         tijdstempel = tijdstempel.minute(tijd.substring(2, 4));
         tijdstempel = tijdstempel.second(0);
-
-        console.log("Na: " + tijdstempelVroeger.format() + " - " + tijdstempel.format());
+        opmerkingHR = tijd.substring(0, 2) + ":" + tijd.substring(2, 4);
 
         if (tijdstempel < tijdstempelVroeger) {
             melding("De tijd moet later dan " + tijdstempelVroeger.hour() + "u" + tijdstempelVroeger.minute() + " zijn.");
@@ -148,10 +160,6 @@ function post(type, vergeten) {
     if (vergeten == "stopKeuzeWerkend") {
         opmerking = "de medewerker heeft doorgewerkt tot de volgende dag";
         nacht = true;
-    }
-
-    if (latitudeLongitude != "" && opmerkingLocatie == "de medewerker heeft geweigert zijn geolocatie mee te geven") {
-        opmerkingLocatie = "";
     }
 
     if (latitudeLongitude == "" && opmerkingLocatie == "") {
@@ -178,14 +186,18 @@ function post(type, vergeten) {
 }
 
 function getLocatie() {
+    opmerkingLocatie = "";
     if (navigator.geolocation) {
         var geoSuccessHandler = function (position) {
-            latitudeLongitude = position.coords.latitude + ";" + position.coords.longitude
+            latitudeLongitude = position.coords.latitude + ";" + position.coords.longitude;
+            $('.containerTime').show();
         };
 
         var geoErrorHandler = function (error) {
             opmerkingLocatie = "de medewerker heeft geweigert zijn geolocatie mee te geven";
-            melding("U heeft uw browser niet toegelaten om de locatie op te halen");
+            if (isLocatieVerplicht != 'false') {
+                melding("U heeft gewijgerd de locatie mee te geven. <br> Gelieve de handleiding te raadplegen over hoe u dit kunt toelaten.");
+            };
         };
 
         var positionOptions = {
@@ -196,6 +208,6 @@ function getLocatie() {
         navigator.geolocation.getCurrentPosition(geoSuccessHandler, geoErrorHandler, positionOptions);
     } else {
         opmerkingLocatie = "de medewerker zijn toestel ondersteund geolocatie niet";
-        melding("uw browser ondersteund locatievoorziening niet");
+        melding("Uw browser ondersteund locatievoorziening niet. <br> Gelieve de handleiding te raadplegen.");
     }
 }
