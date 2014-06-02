@@ -25,6 +25,7 @@ function isVerplicht() {
         },
         error: function (e) {
             melding("De data is niet opgehaald, gelieve de pagina te herladen.");
+            $("#containerLoad").hide();
         }
     });
 }
@@ -48,6 +49,7 @@ function loadData() {
         },
         error: function (e) {
             melding("De data is niet opgehaald, gelieve de pagina te herladen.");
+            $("#containerLoad").hide();
         }
     });
 }
