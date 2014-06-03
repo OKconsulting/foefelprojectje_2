@@ -12,6 +12,10 @@ b {
     font-weight: bold;
 }
 
+a {
+    text-decoration: none;
+}
+
 .ui-datepicker-calendar {
     display: none;
 }
