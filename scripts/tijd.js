@@ -1,4 +1,5 @@
 ﻿var timer;
+var regelMedewerker;
 function popup(situatie) {
     $('#containerTime > div').css('display', 'none');
 
@@ -44,12 +45,29 @@ function loadData() {
             $.each(tijdLogs, function (index, value) {
                 value['tijdstempel'] = moment(value['tijdstempel']);
             })
+
             clearInterval(timer);
-            bepaalSituatie();
+            haalRegelOp();
         },
         error: function (e) {
             melding("De data is niet opgehaald, gelieve de pagina te herladen.");
             $("#containerLoad").hide();
+        }
+    });
+}
+
+function haalRegelOp() {
+    $.ajax({
+        datatype: 'json',
+        url: url + "/api/TijdLog/GetNegPresterenMedewerker/" + mdwID,
+        data: null,
+        success: function (regel) {
+            regelMedewerker = regel;
+            tijdTeWerken = moment.duration(tijdLogs[0]['commentaar']);
+            bepaalSituatie();
+        },
+        error: function (e) {
+            alert("De data is niet opgehaald, gelieve de pagina te herladen.");
         }
     });
 }
@@ -66,7 +84,35 @@ function bepaalSituatie() {
         var laatsteTijdLog = tijdLogs[0];
         if (laatsteTijdLog.type == "STOP" || vandaag.day() == laatsteTijdLog.tijdstempel.day() && vandaag.week() == laatsteTijdLog.tijdstempel.week() && vandaag.month() == laatsteTijdLog.tijdstempel.month() && vandaag.year() == laatsteTijdLog.tijdstempel.year()) {
             if (tijdLogs[1] == null || tijdLogs[1]['type'] == 'STOP') {
-                $('#containerStart').fadeIn();
+                if (tijdLogs.length > 1) {
+                    for (var i = 1; i < tijdLogs.length; i = i + 2) {
+                        tijdAanHetWerk.add(tijdLogs[i]['tijdstempel'].diff(tijdLogs[i + 1]['tijdstempel']));
+                    }
+                    tijdAanHetWerk = tijdAanHetWerk.valueOf() - 3601000;
+                    $('#tijdAanHetWerk').text(moment(tijdAanHetWerk).format("H:mm:ss"));
+                    tijdTeWerken.subtract(tijdAanHetWerk, 'ms');
+                    tijdTeWerken = tijdTeWerken.valueOf() - 7200000 - (regelMedewerker * 3600000);
+                    if (tijdTeWerken <= -3600000)
+                        tijdTeWerken = -3600000;
+
+                    $('#tijdTeWerkenStart').text(moment(tijdTeWerken).format("H:mm:ss"));
+                    $('#containerStart').fadeIn();
+                } else {
+                    $.ajax({
+                        datatype: 'json',
+                        url: url + "/api/TijdLog/GetWerkurenMedewerker/" + mdwID,
+                        data: null,
+                        success: function (data) {
+                            tijdTeWerken = data * 3600000 - 3600000 - (regelMedewerker * 3600000);
+
+                            $('#tijdTeWerkenStart').text(moment(tijdTeWerken).format("H:mm:ss"));
+                            $('#containerStart').fadeIn();
+                        },
+                        error: function (e) {
+                            melding("De data is niet opgehaald, gelieve de pagina te herladen.");
+                        }
+                    });
+                }
             } else {
                 $('#containerStop').fadeIn();
                 for (var i = 0; i < tijdLogs.length; i = i + 2) {
@@ -74,6 +120,10 @@ function bepaalSituatie() {
                 }
                 tijdAanHetWerk = tijdAanHetWerk.valueOf() - 3600000;
                 $('#tijdAanHetWerk').text(moment(tijdAanHetWerk).format("H:mm:ss"));
+                tijdTeWerken.subtract(tijdAanHetWerk, 'ms');
+                tijdTeWerken = tijdTeWerken.valueOf() - 7199000 - (regelMedewerker * 3600000);
+                if (tijdTeWerken <= -3600000)
+                    tijdTeWerken = -3600000;
 
                 $("#progressbar").progressbar({
                     value: tijdAanHetWerk.valueOf(),
@@ -84,7 +134,12 @@ function bepaalSituatie() {
 
                 setInterval(function () {
                     tijdAanHetWerk += 1000;
+                    if (tijdTeWerken > -3600000)
+                        tijdTeWerken -= 1000;
+                    else
+                        tijdTeWerken = -3600000;
                     $('#tijdAanHetWerk').text(moment(tijdAanHetWerk).format("H:mm:ss"));
+                    $('#tijdTeWerkenStop').text(moment(tijdTeWerken).format("H:mm:ss"));
 
                     $("#progressbar").progressbar({
                         value: tijdAanHetWerk.valueOf(),
