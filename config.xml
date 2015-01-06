@@ -22,12 +22,12 @@
   </platform>
 
   <platform name="android">
-    <icon src="/icons/android/icon.png" gap:platform="android"/>
+    <icon src="/icons/android/icon.png" />
     <splash src="/icons/android/splash.png" />
-    <icon src="/icons/android/icon-hdpi.png" gap:density="hdpi" />
-    <icon src="/icons/android/icon-ldpi.png" gap:density="ldpi" />
-    <icon src="/icons/android/icon-mdpi.png" gap:density="mdpi" />
-    <icon src="/icons/android/icon-xhdpi.png" gap:density="xhdpi" />
+    <icon src="/icons/android/icon-hdpi.png" density="hdpi" />
+    <icon src="/icons/android/icon-ldpi.png" density="ldpi" />
+    <icon src="/icons/android/icon-mdpi.png" density="mdpi" />
+    <icon src="/icons/android/icon-xhdpi.png" density="xhdpi" />
   </platform>
 
   <platform name="wp8">
