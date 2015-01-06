@@ -6,10 +6,10 @@
   </description>
   <author email="morten.minne@okc.be">morten.minne@okc.be</author>
   <content src="index.html" />
-  <!--<access origin="http://127.0.0.1*"/>
-  <access origin="http://10.0.2.2*"/>-->
+  <access origin="http://127.0.0.1*"/>
+  <access origin="http://10.0.2.2*"/>
   <access origin="*" />
-<!--
+
   <platform name="ios">
     <icon src="/icons/ios/icon.png" width="57" height="57" />
     <icon src="/icons/ios/icon-72.png" width="72" height="72" />
@@ -35,12 +35,12 @@
     <icon src="/icons/wp8/icon-159.png" width="159" height="159" />
     <splash src="/icons/wp8/splash.png" width="768" height="1280"/>
   </platform>
--->
-  <!--<preference name="phonegap-version" value="3.5.0" />-->
-  <!--<preference name="orientation" value="portrait" />
+
+  <preference name="phonegap-version" value="3.5.0" />
+  <preference name="orientation" value="portrait" />
   <preference name="DisallowOverscroll" value="true" />
   <preference name="permissions" value="none" />
 
   <plugin name="org.apache.cordova.geolocation" />
-  <plugin name="com.phonegap.plugin.statusbar" />-->
+  <plugin name="com.phonegap.plugin.statusbar" />
 </widget>
