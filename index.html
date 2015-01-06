@@ -1,41 +1,103 @@
-<!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
+﻿<html class="ui-mobile">
+<head>
+    <title>Time.e-ok</title>
+    <link rel="stylesheet" href="themes/reset.css" />
+    <link href="themes/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="themes/stijl.css" />
+    <link rel="stylesheet" href="themes/tijdsregistratie.css" />
+    <!--<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.structure-1.4.2.min.css" />-->
+    <script src="scripts/jquery-1.11.2.min.js"></script>
+    <script src="scripts/jquery.mobile-1.4.5.min.js"></script>
+    <!--<style>
+        * {
+            background-color: red;
+        }
+    </style>-->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
 
-    http://www.apache.org/licenses/LICENSE-2.0
+</head>
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+<body class="ui-mobile-viewport ui-overlay-c">
+
+    <div data-role="page" id="login" data-theme="a">
+        <div data-role="content" class="ui-content" role="main">
+            <div class="melding">
+            </div>
+            <div id="containerLogin">
+                <input type="email" id="loginInput" placeholder="Login" />
+                <input type="password" id="paswoordInput" placeholder="Paswoord" />
+                <input type="button" id="inloggen" value="Inloggen" data-role="button" />
+            </div>
+            <div id="containerLoading">
+                <img src="images/gif-load.gif" />
             </div>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-    </body>
+        <div data-role="footer" data-position="fixed">
+            <img src="images/logo-okc.png" />
+        </div>
+    </div>
+    
+    <script src="scripts/database-connection.js"></script>
+    <script src="cordova.js"></script>
+    <script charset="UTF-8">
+        var timeout;
+        $(document).ready(function () {
+            var mdwID = window.localStorage.getItem("mdwID");
+
+            if (mdwID != null) {
+                window.localStorage.setItem("mdwID", mdwID);
+                window.location.href = "./home.html#home";
+            }
+
+        });
+
+        $("#inloggen").on('click', function () {
+            $('#containerLogin').css('display', 'none');
+            $('#containerLoading').css('display', 'block');
+            login();
+        });
+
+        $('#loginInput, #paswoordInput').focus(function () {
+            $('[data-role=footer]').css("display", "none");
+        });
+
+        function melding(bericht) {
+            $('.melding').text(bericht);
+            $('.melding').fadeIn();
+            window.clearTimeout(timeout);
+            timeout = setTimeout(function () { $('.melding').fadeOut(); }, 3000);
+        }
+
+        function login() {
+            console.log('login');
+            var user = { UserName: $("#loginInput").val(), Paswoord: $("#paswoordInput").val(), MedewerkerID: 0, Role: "" };
+
+            $.ajax({
+                url: url + 'api/user/login',
+                type: 'POST',
+                async: false,
+                contentType: 'application/json',
+                data: JSON.stringify(user),
+                success: function (data) {
+                    window.localStorage.setItem("mdwID", data.MedewerkerID);
+                    window.location.href = "./home.html#home";
+                },
+                error: function (e) {
+                    $('#containerLogin').css('display', 'block');
+                    $('#containerLoading').css('display', 'none');
+                    if (e.responseJSON == "login") {
+                        melding("Deze login heeft geen toegang tot de applicatie.");
+                    } else if (e.responseJSON == "wachtwoord") {
+                        melding("U heeft een verkeerd wachtwoord ingevoerd.");
+                    } else {
+                        melding("U heeft geen internet connectie.");
+                    }
+                },
+                dataType: 'json',
+                contentType: "application/json"
+            });
+        }
+    </script>
+</body>
 </html>
