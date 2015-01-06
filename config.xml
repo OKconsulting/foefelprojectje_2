@@ -42,5 +42,5 @@
   <preference name="permissions" value="none" />
 
   <plugin name="org.apache.cordova.geolocation" />
-  <plugin name="com.phonegap.plugin.statusbar" />
+  <!--<plugin name="com.phonegap.plugin.statusbar" />-->
 </widget>
