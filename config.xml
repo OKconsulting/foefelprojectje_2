@@ -41,6 +41,6 @@
   <preference name="DisallowOverscroll" value="true" />
   <preference name="permissions" value="none" />
 
-  <gap:plugin name="org.apache.cordova.geolocation" />
-  <gap:plugin name="com.phonegap.plugin.statusbar" />
+  <plugin name="org.apache.cordova.geolocation" />
+  <plugin name="com.phonegap.plugin.statusbar" />
 </widget>
