@@ -1,46 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<widget id="com.okc.time.e-ok" version="1.1.3" versionCode="287" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>Time.e-ok</name>
-  <description>
-    Time.e-ok is nu beschikbaar op uw toestel! Met de applicatie kan je de werktijden loggen en raadplegen net zoals op de website www.time.e-ok.be!
-  </description>
-  <author email="morten.minne@okc.be">morten.minne@okc.be</author>
-  <content src="index.html" />
-  <access origin="http://127.0.0.1*"/>
-  <access origin="http://10.0.2.2*"/>
-  <access origin="*" />
-
-  <platform name="ios">
-    <icon src="/icons/ios/icon.png" width="57" height="57" />
-    <icon src="/icons/ios/icon-72.png" width="72" height="72" />
-    <icon src="/icons/ios/icon-76.png" width="76" height="76" />
-    <icon src="/icons/ios/icon-120.png" width="120" height="120" />
-    <icon src="/icons/ios/icon-152.png" width="152" height="152" />
-    <splash src="/icons/ios/small.png" width="320" height="480" />
-    <splash src="/icons/ios/large.png" width="640" height="960" />
-    <splash src="/icons/ios/xlarge.png" width="640" height="1136" />
-  </platform>
-
-  <platform name="android">
-    <icon src="/icons/android/icon.png" />
-    <splash src="/icons/android/splash.png" />
-    <icon src="/icons/android/icon-hdpi.png" density="hdpi" />
-    <icon src="/icons/android/icon-ldpi.png" density="ldpi" />
-    <icon src="/icons/android/icon-mdpi.png" density="mdpi" />
-    <icon src="/icons/android/icon-xhdpi.png" density="xhdpi" />
-  </platform>
-
-  <platform name="wp8">
-    <icon src="/icons/wp8/icon-99.png" width="99" height="99" />
-    <icon src="/icons/wp8/icon-159.png" width="159" height="159" />
-    <splash src="/icons/wp8/splash.png" width="768" height="1280"/>
-  </platform>
-
-  <preference name="phonegap-version" value="3.5.0" />
-  <preference name="orientation" value="portrait" />
-  <preference name="DisallowOverscroll" value="true" />
-  <preference name="permissions" value="none" />
-
-  <plugin name="org.apache.cordova.geolocation" />
-  <plugin name="com.phonegap.plugin.statusbar" />
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.okc.testCss" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>TestCss</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
 </widget>
