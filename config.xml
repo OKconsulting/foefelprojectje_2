@@ -5,6 +5,7 @@
     Time.e-ok is nu beschikbaar op uw toestel! Met de applicatie kan je de werktijden loggen en raadplegen net zoals op de website www.time.e-ok.be!
   </description>
   <author email="morten.minne@okc.be">morten.minne@okc.be</author>
+  <content src="index.html" />
   <access origin="http://127.0.0.1*"/>
   <access origin="http://10.0.2.2*"/>
   <access origin="*" />
