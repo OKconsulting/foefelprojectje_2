@@ -36,7 +36,7 @@
     <splash src="/icons/wp8/splash.png" width="768" height="1280"/>
   </platform>
 
-  <preference name="phonegap-version" value="3.5.0" />
+  <preference name="phonegap-version" value="3.6.4" />
   <preference name="orientation" value="portrait" />
   <preference name="DisallowOverscroll" value="true" />
   <preference name="permissions" value="none" />
