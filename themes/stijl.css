@@ -254,7 +254,7 @@ p {
 }
 
 .knop {
-    zoom: 1;
+    /*zoom: 1;*/
     padding: 2px 8px;
     margin: 5px 0;
     height: 50px;
