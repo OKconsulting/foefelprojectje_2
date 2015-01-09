@@ -32,6 +32,7 @@
   </platform>
 
   <platform name="wp8">
+    <icon src="icons/wp8/icon.png" />
     <icon src="/icons/wp8/icon-99.png" width="99" height="99" />
     <icon src="/icons/wp8/icon-159.png" width="159" height="159" />
     <splash src="/icons/wp8/splash.png" width="768" height="1280"/>
