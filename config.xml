@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget id="com.okc.time.e-ok" version="1.1.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>Time.e-ok</name><!-- versionCode="287" -->
+<widget id="com.okc.time.e-ok" version="1.1.3" versionCode="287" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Time.e-ok</name>
   <description>
     Time.e-ok is nu beschikbaar op uw toestel! Met de applicatie kan je de werktijden loggen en raadplegen net zoals op de website www.time.e-ok.be!
   </description>
-  <author email="morten.minne@okc.be"  href="http://cordova.io">morten.minne@okc.be</author>
+  <author email="morten.minne@okc.be">morten.minne@okc.be</author>
   <content src="index.html" />
+  
   <access origin="http://127.0.0.1*"/>
   <access origin="http://10.0.2.2*"/>
   <access origin="*" />
@@ -36,11 +37,21 @@
     <splash src="/icons/wp8/splash.png" width="768" height="1280"/>
   </platform>
 
-  <preference name="phonegap-version" value="3.6.3" />
+  <preference name="phonegap-version" value="3.5.0" />
   <preference name="orientation" value="portrait" />
   <preference name="DisallowOverscroll" value="true" />
   <preference name="permissions" value="none" />
+  <preference name="exit-on-suspend" value="true" />
+  <preference name="Fullscreen" value="true" />
 
-  <plugin name="org.apache.cordova.geolocation" />
+  <!--<plugin name="org.apache.cordova.geolocation" />-->
   <plugin name="com.phonegap.plugin.statusbar" />
+
+  <config-file platform="ios" parent="UIStatusBarHidden">
+    <true/>
+  </config-file>
+
+  <config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance">
+    <false/>
+  </config-file>
 </widget>
