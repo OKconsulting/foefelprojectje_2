@@ -41,10 +41,8 @@
   <preference name="orientation" value="portrait" />
   <preference name="DisallowOverscroll" value="true" />
   <preference name="permissions" value="none" />
-  <preference name="exit-on-suspend" value="true" />
-  <preference name="Fullscreen" value="true" />
 
-  <!--<plugin name="org.apache.cordova.geolocation" />-->
+  <plugin name="org.apache.cordova.geolocation" />
   <plugin name="com.phonegap.plugin.statusbar" />
 
   <config-file platform="ios" parent="UIStatusBarHidden">
