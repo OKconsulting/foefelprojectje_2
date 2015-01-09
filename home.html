@@ -169,6 +169,12 @@
     <script src="scripts/statistieken.js"></script>
     <script src="cordova.js"></script>
     <script charset="UTF-8">
+        document.addEventListener("backbutton", backButtonDown, false);
+        function backButtonDown() {
+            e.preventDefault();
+            navigator.app.exitApp();
+        }
+
         var mdwID = window.localStorage.getItem("mdwID");
         //home
         var tijdLogs;

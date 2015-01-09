@@ -33,6 +33,12 @@
     <script src="scripts/database-connection.js"></script>
     <script src="cordova.js"></script>
     <script>
+        document.addEventListener("backbutton", backButtonDown, false);
+        function backButtonDown() {
+            e.preventDefault();
+            navigator.app.exitApp();
+        }
+
         var timeout;
         $(document).ready(function () {
             var mdwID = window.localStorage.getItem("mdwID");
