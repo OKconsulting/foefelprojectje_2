@@ -11,8 +11,6 @@
   <access origin="http://10.0.2.2*"/>
   <access origin="*" />
 
-  <icon src="icon.png" />
-
   <platform name="ios">
     <icon src="/icons/ios/icon.png" width="57" height="57" />
     <icon src="/icons/ios/icon-72.png" width="72" height="72" />
