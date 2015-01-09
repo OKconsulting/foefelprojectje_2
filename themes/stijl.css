@@ -283,3 +283,8 @@ p {
 .tabel_uren span {
     cursor: pointer;
 }
+
+.headerLogo {
+    margin-top: 50px;
+    text-align: center;
+}
