@@ -288,3 +288,33 @@ p {
     margin-top: 50px;
     text-align: center;
 }
+
+.ui-panel-inner {
+    padding: 0 !important;
+}
+
+#About #contactGeg p {
+    font-weight: bold;
+    font-size: 13pt;
+}
+
+#contactGeg {
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    margin-left: -86px;
+    top: 50%;
+    margin-top: -102px;
+    color: #008f83;
+}
+
+#contactGeg p:nth-child(5) {
+    margin-bottom: 20px;
+}
+
+#abPageFooter {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 15px;
+}

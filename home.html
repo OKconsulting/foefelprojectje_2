@@ -7,9 +7,9 @@
     <link rel="stylesheet" type="text/css" href="themes/reset.css" />
     <link rel="stylesheet" type="text/css" href="themes/stijl.css" />
     <link href="themes/jquery.mobile-1.4.3.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="themes/tijdsregistratie.css" />
+    <link rel="stylesheet" type="text/css" href="themes/tijdsregistratie.css" /><!--
     <link href="themes/jquery.mobile.structure-1.4.3.min.css" rel="stylesheet" />
-    <link href="themes/jquery.mobile.icons-1.4.3.min.css" rel="stylesheet" />
+    <link href="themes/jquery.mobile.icons-1.4.3.min.css" rel="stylesheet" />-->
     <script src="scripts/jquery-1.10.2.min.js"></script>
     <script src="scripts/jquery.mobile-1.4.3.min.js"></script>
 
@@ -102,6 +102,7 @@
                 <ul class="menu">
                     <li><a href="#home" data-rel="close" data-transition="none"><img src="images/home.png" /><span>Home</span><div class="clear-fix"></div></a></li>
                     <li><a href="#statistieken" data-rel="close" data-transition="none"><img src="images/statistieken.png" /><span>Statistieken</span><div class="clear-fix"></div></a></li>
+                    <li><a href="#About" data-rel="close" data-transition="none"><img src="images/About.png" /><span>OKc</span><div class="clear-fix"></div></a></li>
                     <li><a onclick="logout()"><img src="images/logout.png" /><span>Logout</span><div class="clear-fix"></div></a></li>
                 </ul>
             </div>
@@ -156,12 +157,55 @@
                 <ul class="menu">
                     <li><a href="#home" data-rel="close" data-transition="none"><img src="images/home.png" /><span>Home</span><div class="clear-fix"></div></a></li>
                     <li><a href="#statistieken" data-rel="close" data-transition="none"><img src="images/statistieken.png" /><span>Statistieken</span><div class="clear-fix"></div></a></li>
+                    <li><a href="#About" data-rel="close" data-transition="none"><img src="images/About.png" /><span>OKc</span><div class="clear-fix"></div></a></li>
                     <li><a onclick="logout()"><img src="images/logout.png" /><span>Logout</span><div class="clear-fix"></div></a></li>
                 </ul>
             </div>
         </div>
     </div>
 
+    <div data-role="page" id="About" data-theme="b">
+        <div data-role="header" class="header" data-position="fixed">
+            <div class="left"><a href="#about_panel"><img src="images/menu.png" /></a></div>
+            <div class="right"><a href="#Toon-map" data-role="none" data-rel="popup" data-position-to="window" onclick="initialize()"><img src="images/map.png" /></a></div>
+            <div class="center"><h1><a href="#home">Time.e-ok</a></h1></div>
+        </div>
+
+        <div data-role="popup" id="Toon-map" class="ui-content" data-theme="a">
+            <div id="myGoogleMap" style="width: 350px; height: 550px;">
+            </div>
+        </div>
+
+        <div data-role="content" class="ui-content" role="main">
+            <div id="contactGeg">
+                <p>OKc bvba</p>
+                <p>Accent Business Park</p>
+                <p>Kwadestraat 149</p>
+                <p>B-8800 Roeselare</p>
+                <p>België</p>
+                <p>contact@okc.be</p>
+                <p>www.okc.be</p>
+            </div>
+            <div id="abPageFooter">
+                <img src="images/logo-okc.png" />
+            </div>
+        </div>
+
+        <div data-role="panel" id="about_panel" data-position="left" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-left ui-panel-display-reveal ui-body-b ui-panel-animate ui-panel-open">
+            <div class="ui-panel-inner">
+                <a href="#home" data-transition="none" data-rel="close" class='about_hide_panel' style='display:none;'></a>
+                <ul class="menu">
+                    <li><a href="#home" data-rel="close" data-transition="none"><img src="images/home.png" /><span>Home</span><div class="clear-fix"></div></a></li>
+                    <li><a href="#statistieken" data-rel="close" data-transition="none"><img src="images/statistieken.png" /><span>Statistieken</span><div class="clear-fix"></div></a></li>
+                    <li><a href="#About" data-rel="close" data-transition="none"><img src="images/About.png" /><span>OKc</span><div class="clear-fix"></div></a></li>
+                    <li><a onclick="logout()"><img src="images/logout.png" /><span>Logout</span><div class="clear-fix"></div></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDQlGfx1xy-4iELx4sSB759T-ESWARO39Y&sensor=false&libraries=places&language=en"></script>
+    <script src="scripts/googleMap.js"></script>
     <script src="scripts/database-connection.js"></script>
     <script src="scripts/jquery-ui-1.10.4.custom.js"></script>
     <script src="scripts/moment.js"></script>
@@ -170,6 +214,11 @@
     <script src="scripts/statistieken.js"></script>
     <script src="cordova.js"></script>
     <script charset="UTF-8">
+        $(document).on('pagebeforeshow', '#About', function () {
+            var deviceWidth = document.documentElement.clientWidth - 16;
+            $('#abPageFooter').css('width', deviceWidth);
+        });
+
         document.addEventListener("backbutton", backButtonDown, false);
         function backButtonDown() {
             e.preventDefault();
