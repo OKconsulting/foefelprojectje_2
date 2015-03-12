@@ -21,10 +21,10 @@ function isVerplicht() {
             isLocatieVerplicht = data.verplicht;
             loadData();
             getLocatie();
-            if (isLocatieVerplicht == 'false') {
+            /*if (isLocatieVerplicht == 'false') {
                 $('#containerTime').show();
                 $("#containerLoad").hide();
-            }
+            }*/
         },
         error: function (e) {
             melding("De data is niet opgehaald, gelieve de pagina te herladen.");
@@ -250,6 +250,7 @@ function getLocatie() {
         var geoSuccessHandler = function (position) {
             latitudeLongitude = position.coords.latitude + ";" + position.coords.longitude;
             $('#containerTime').show();
+            $("#containerLoad").hide();
         };
 
         var geoErrorHandler = function (error) {
@@ -257,7 +258,7 @@ function getLocatie() {
             if (isLocatieVerplicht != 'false') {
                 melding("U heeft gewijgerd de locatie mee te geven. <br> Gelieve de handleiding te raadplegen over hoe u dit kunt toelaten.");
             };
-            //$("#containerLoad").hide();
+            $("#containerLoad").hide();
         };
 
         var positionOptions = {
