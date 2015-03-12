@@ -14,7 +14,7 @@
 <body class="ui-mobile-viewport ui-overlay-c">
     <div data-role="page" id="login" data-theme="a">
         <div data-role="content" class="ui-content" role="main">
-            <div class="melding">
+            <div class="melding" onclick="hideMelding()">
             </div>
             <div class="headerLogo">
                 <img src="images/time.e-ok_Logo.png" width="57" height="57" />
@@ -36,6 +36,8 @@
     <script src="scripts/database-connection.js"></script>
     <script src="cordova.js"></script>
     <script>
+        var APIVersion = '2';
+
         document.addEventListener("backbutton", backButtonDown, false);
         function backButtonDown() {
             e.preventDefault();
@@ -47,10 +49,24 @@
             var mdwID = window.localStorage.getItem("mdwID");
 
             if (mdwID != null) {
-                window.localStorage.setItem("mdwID", mdwID);
-                window.location.href = "./home.html#home";
+                $.ajax({
+                    headers: { 'Access-Control-Allow-Origin': "*" },
+                    url: url + 'api/User/getVersionInfo/?apiVersion=' + APIVersion,
+                    cache: false,
+                    type: 'GET',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        window.localStorage.setItem("mdwID", mdwID);
+                        window.location.href = "./home.html#home";
+                    },
+                    error: function (e) {
+                        if (e.responseJSON == undefined || e.responseJSON == null)
+                            melding("U heeft geen internet connectie.", 3000, 'error');
+                        else
+                            melding(e.responseJSON, 3000, 'error');
+                    }
+                });
             }
-
         });
 
         $("#inloggen").on('click', function () {
@@ -63,11 +79,27 @@
             $('[data-role=footer]').css("display", "none");
         });
 
-        function melding(bericht) {
+        function melding(bericht, fadeDelay, status) {
+            switch (status) {
+                case "error":
+                    $('.melding').css('background-color', '#ff5757');
+                    break;
+                case "warning":
+                    $('.melding').css('background-color', '#ffdd57');
+                    break;
+                case "success":
+                    $('.melding').css('background-color', '#57dd57');
+                    break;
+            }
             $('.melding').text(bericht);
             $('.melding').fadeIn();
             window.clearTimeout(timeout);
-            timeout = setTimeout(function () { $('.melding').fadeOut(); }, 3000);
+            timeout = setTimeout(function () { $('.melding').fadeOut(); }, fadeDelay);
+        }
+
+        function hideMelding() {
+            clearTimeout(timeout);
+            $('.melding').fadeOut();
         }
 
         function login() {
@@ -75,7 +107,7 @@
             var user = { UserName: $("#loginInput").val(), Paswoord: $("#paswoordInput").val(), MedewerkerID: 0, Role: "" };
 
             $.ajax({
-                url: url + 'api/user/login',
+                url: url + 'api/user/login/?apiVersion=' + APIVersion,
                 type: 'POST',
                 async: false,
                 contentType: 'application/json',
@@ -87,12 +119,21 @@
                 error: function (e) {
                     $('#containerLogin').css('display', 'block');
                     $('#containerLoading').css('display', 'none');
-                    if (e.responseJSON == "login") {
-                        melding("Deze login heeft geen toegang tot de applicatie.");
-                    } else if (e.responseJSON == "wachtwoord") {
-                        melding("U heeft een verkeerd wachtwoord ingevoerd.");
-                    } else {
-                        melding("U heeft geen internet connectie.");
+
+                    if (e.responseJSON == undefined || e.responseJSON == null)
+                        melding("U heeft geen internet connectie.", 3000, 'error');
+                    else {
+                        if (e.responseJSON == "login") {
+                            melding("Deze login heeft geen toegang tot de applicatie.", 3000, 'error');
+                        } else if (e.responseJSON == "wachtwoord") {
+                            melding("U heeft een verkeerd wachtwoord ingevoerd.", 3000, 'error');
+                        } else if (e.responseJSON = "versie") {
+                            melding("Gelieve de nieuwste versie van de app te installeren. Deze is gratis beschikbaar in de app store.", 3000, 'error');
+                        } else if (e.responseJSON = "orgInactief") {
+                            melding("Uw toegang is niet langer actief. Contacteer de HR-verantwoordelijk van uw organisatie!", 3000, 'error');
+                        } else {
+                            melding(e.responseJSON, 3000, 'error');
+                        }
                     }
                 },
                 dataType: 'json',
