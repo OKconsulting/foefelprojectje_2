@@ -23,6 +23,7 @@ function isVerplicht() {
             getLocatie();
             if (isLocatieVerplicht == 'false') {
                 $('#containerTime').show();
+                $("#containerLoad").hide();
             }
         },
         error: function (e) {
@@ -256,7 +257,7 @@ function getLocatie() {
             if (isLocatieVerplicht != 'false') {
                 melding("U heeft gewijgerd de locatie mee te geven. <br> Gelieve de handleiding te raadplegen over hoe u dit kunt toelaten.");
             };
-            $("#containerLoad").hide();
+            //$("#containerLoad").hide();
         };
 
         var positionOptions = {
