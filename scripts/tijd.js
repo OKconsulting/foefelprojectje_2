@@ -15,7 +15,7 @@ function isVerplicht() {
     $('#containerTime').hide();
     $.ajax({
         datatype: 'json',
-        url: url + "/api/TijdLog/GetIsLocatieVerplicht/" + mdwID,
+        url: url + "/api/TijdLog/GetIsLocatieVerplicht/?id=" + mdwID + '&apiVersie=' + APIVersion,
         data: null,
         success: function (data) {
             isLocatieVerplicht = data.verplicht;

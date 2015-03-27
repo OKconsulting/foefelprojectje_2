@@ -8,7 +8,7 @@
 
     $.ajax({
         datatype: 'json',
-        url: url + "api/TijdLog/GetTijdLogsVanMaand/?userID=" + mdwID + "&maand=" + maand,
+        url: url + "api/TijdLog/GetTijdLogsVanMaand/?userID=" + mdwID + "&maand=" + maand + '&apiVersie=' + APIVersion,
         data: null,
         success: function (data) {
             tijdPerDag = data;
