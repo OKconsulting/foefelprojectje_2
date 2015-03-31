@@ -252,6 +252,7 @@
         //});
 
         function loadAll() {
+            navigator.geolocation.getCurrentPosition(geoSuccessHandler, geoErrorHandler, positionOptions);
             isVerplicht();
             loadStatistieken();
         }
