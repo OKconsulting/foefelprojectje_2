@@ -215,10 +215,19 @@
     <script src="cordova.js"></script>
     <script charset="UTF-8">
         var APIVersion = '2';
+        var docReady = false;
+        var deviceReady = false;
+
+        document.addEventListener("deviceready", deviceIsReady, false);
+        function deviceIsReady() {
+            deviceReady = true;
+            loadAll();
+        }
+        document.addEventListener("resume", isVerplicht, false);
 
         $(document).ready(function () {
-            document.addEventListener("deviceready", loadAll, false);
-            document.addEventListener("resume", isVerplicht, false);
+            docReady = true;
+            loadAll();
         });
 
         $(document).on('pagebeforeshow', '#About', function () {
@@ -252,9 +261,10 @@
         //});
 
         function loadAll() {
-            navigator.geolocation.getCurrentPosition(geoSuccessHandler, geoErrorHandler, positionOptions);
-            isVerplicht();
-            loadStatistieken();
+            if (docReady && deviceReady) {
+                isVerplicht();
+                loadStatistieken();
+            }
         }
 
         function melding(bericht) {
