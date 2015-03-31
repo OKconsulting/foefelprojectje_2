@@ -216,6 +216,11 @@
     <script charset="UTF-8">
         var APIVersion = '2';
 
+        $(document).ready(function () {
+            document.addEventListener("deviceready", loadAll, false);
+            document.addEventListener("resume", isVerplicht, false);
+        });
+
         $(document).on('pagebeforeshow', '#About', function () {
             var deviceWidth = document.documentElement.clientWidth - 16;
             $('#abPageFooter').css('width', deviceWidth);
@@ -245,9 +250,6 @@
         //$(document).ready(function () {
         //    loadAll();
         //});
-
-        document.addEventListener("deviceready", loadAll, false);
-        document.addEventListener("resume", isVerplicht, false);
 
         function loadAll() {
             isVerplicht();
