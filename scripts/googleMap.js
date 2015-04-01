@@ -13,8 +13,8 @@ function initialize() {
     }
 }
 
-var mapHeight = $(document).height() / 100 * 75;
+var mapHeight = document.documentElement.clientHeight /*$(document).height()*/ / 100 * 75;
 $('#myGoogleMap').css('height', mapHeight + 'px');
 
-var mapWidth = $(document).width() / 100 * 75;
+var mapWidth = document.documentElement.clientWidth /*$(document).width()*/ / 100 * 75;
 $('#myGoogleMap').css('width', mapWidth + 'px');
