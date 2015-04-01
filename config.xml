@@ -42,6 +42,9 @@
   <preference name="DisallowOverscroll" value="true" />
   <preference name="permissions" value="none" />
 
+  <feature name="Device">
+    <param name="ios-package" value="org.apache.cordova.geolocation" />
+  </feature>
   <plugin name="org.apache.cordova.geolocation" />
   <plugin name="com.phonegap.plugin.statusbar" />
 
