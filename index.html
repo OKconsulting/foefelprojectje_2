@@ -40,13 +40,15 @@
 
         document.addEventListener("deviceready", getLocatie, false);
         function getLocatie() {
-            alert("if (navigator.geolocation) {");
+
             if (navigator.geolocation) {
                 var geoSuccessHandler = function (position) {
+                    alert("geoSuccessHandler");
                     melding("U bevindt zich in de successhandler");
                 };
 
                 var geoErrorHandler = function (error) {
+                    alert("geoErrorHandler");
                     melding("U bevindt zich in de errorhandler.");
                 };
 
@@ -54,7 +56,7 @@
                     enableHighAccuracy: true,
                     maximumAge: 0
                 };
-                alert("navigator.geolocation.getCurrentPosition(geoSuccessHandler, geoErrorHandler, positionOptions);");
+                alert("navigator.geolocation.getCurrentPosition(...);");
                 navigator.geolocation.getCurrentPosition(geoSuccessHandler, geoErrorHandler, positionOptions);
             }
         }

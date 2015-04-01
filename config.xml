@@ -42,7 +42,7 @@
   <preference name="DisallowOverscroll" value="true" />
   <preference name="permissions" value="none" />
 
-  <plugin name="org.apache.cordova.geolocation" />
+  <plugin name="org.apache.cordova.core.geolocation" />
   <plugin name="com.phonegap.plugin.statusbar" />
 
   <config-file platform="ios" parent="UIStatusBarHidden">
