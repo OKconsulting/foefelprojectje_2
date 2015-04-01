@@ -13,8 +13,10 @@ function initialize() {
     }
 }
 
-var mapHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) / 100 * 75; // $(document).height() / 100 * 75;
-$('#myGoogleMap').css('height', mapHeight + 'px');
+$(document).ready(function () {
+    var mapHeight = $(document).height() / 100 * 75;
+    $('#myGoogleMap').css('height', mapHeight + 'px');
 
-var mapWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) / 100 * 75; // $(document).width() / 100 * 75;
-$('#myGoogleMap').css('width', mapWidth + 'px');
+    var mapWidth = $(document).width() / 100 * 75;
+    $('#myGoogleMap').css('width', mapWidth + 'px');
+});
