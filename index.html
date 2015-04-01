@@ -40,14 +40,14 @@
 
         document.addEventListener("deviceready", getLocatie, false);
         function getLocatie() {
-
+            alert("hallo");
             if (navigator.geolocation) {
                 var geoSuccessHandler = function (position) {
-                    melding("U bevindt zich in de successhandler");
+                    melding("U bevindt zich in de successhandler", 3000, "success");
                 };
 
                 var geoErrorHandler = function (error) {
-                    melding("U bevindt zich in de errorhandler.");
+                    melding("U bevindt zich in de errorhandler.", 3000, "success");
                 };
 
                 var positionOptions = {
