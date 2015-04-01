@@ -8,8 +8,8 @@
     <link rel="stylesheet" type="text/css" href="themes/stijl.css" />
     <link href="themes/jquery.mobile-1.4.3.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="themes/tijdsregistratie.css" />
-    <script src="jquery-1.10.2.min.js"></script>
-    <script src="jquery.mobile-1.4.3.min.js"></script>
+    <script src="scripts/jquery-1.10.2.min.js"></script>
+    <script src="scripts/jquery.mobile-1.4.3.min.js"></script>
 </head>
 <body class="ui-mobile-viewport ui-overlay-c">
     <div data-role="page" id="login" data-theme="a">
@@ -40,6 +40,7 @@
 
         document.addEventListener("deviceready", getLocatie, false);
         function getLocatie() {
+            alert("if (navigator.geolocation) {");
             if (navigator.geolocation) {
                 var geoSuccessHandler = function (position) {
                     melding("U bevindt zich in de successhandler");
@@ -53,7 +54,7 @@
                     enableHighAccuracy: true,
                     maximumAge: 0
                 };
-
+                alert("navigator.geolocation.getCurrentPosition(geoSuccessHandler, geoErrorHandler, positionOptions);");
                 navigator.geolocation.getCurrentPosition(geoSuccessHandler, geoErrorHandler, positionOptions);
             }
         }
