@@ -42,11 +42,15 @@
         }, false);
         document.addEventListener("deviceready", function () {
             if (navigator.geolocation) {
+                var geoSuccessHandler = function (position) { };
+
+                var geoErrorHandler = function (error) { };
+
                 var positionOptions = {
                     enableHighAccuracy: true,
                     maximumAge: 0
                 }
-                navigator.geolocation.getCurrentPosition(function (position) { }, function (error) { }, positionOptions);
+                navigator.geolocation.getCurrentPosition(geoSuccessHandler, geoErrorHandler, positionOptions);
             }
         }, false);
         document.addEventListener("backbutton", backButtonDown, false);
