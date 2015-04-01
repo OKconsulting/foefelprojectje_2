@@ -20,7 +20,7 @@ function isVerplicht() {
         success: function (data) {
             isLocatieVerplicht = data.verplicht;
             loadData();
-            getLocatie();
+            //getLocatie();
             /*if (isLocatieVerplicht == 'false') {
                 $('#containerTime').show();
                 $("#containerLoad").hide();

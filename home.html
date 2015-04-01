@@ -215,19 +215,10 @@
     <script src="cordova.js"></script>
     <script charset="UTF-8">
         var APIVersion = '2';
-        var docReady = false;
-        var deviceReady = false;
-
-        document.addEventListener("deviceready", deviceIsReady, false);
-        function deviceIsReady() {
-            deviceReady = true;
-            loadAll();
-        }
-        document.addEventListener("resume", isVerplicht, false);
 
         $(document).ready(function () {
-            docReady = true;
-            loadAll();
+            document.addEventListener("deviceready", loadAll, false); //loadAll();
+            document.addEventListener("resume", isVerplicht, false);
         });
 
         $(document).on('pagebeforeshow', '#About', function () {
@@ -256,12 +247,8 @@
         var rijNummer = 1;
         var vandaag = moment();
 
-        //$(document).ready(function () {
-        //    loadAll();
-        //});
-
         function loadAll() {
-            if (docReady && deviceReady) {
+            if (navigator.geolocation) {
                 isVerplicht();
                 loadStatistieken();
             }
