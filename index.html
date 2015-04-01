@@ -10,6 +10,9 @@
     <link rel="stylesheet" type="text/css" href="themes/tijdsregistratie.css" />
     <script src="scripts/jquery-1.10.2.min.js"></script>
     <script src="scripts/jquery.mobile-1.4.3.min.js"></script>
+
+    <script src="scripts/database-connection.js"></script>
+    <script src="cordova.js"></script>
 </head>
 <body class="ui-mobile-viewport ui-overlay-c">
     <div data-role="page" id="login" data-theme="a">
@@ -32,22 +35,18 @@
             <img src="images/logo-okc.png" />
         </div>
     </div>
-
-    <script src="scripts/database-connection.js"></script>
-    <script src="cordova.js"></script>
     <script>
         var APIVersion = '2';
-
-        document.addEventListener("deviceready", getLocatie, false);
-        function getLocatie() {
-            if (navigator.geolocation) {
-                var positionOptions = {
-                    enableHighAccuracy: true,
-                    maximumAge: 0
-                };
-                navigator.geolocation.getCurrentPosition(function (position) { }, function (error) { }, positionOptions);
+        document.addEventListener("deviceready", function () {
+            navigator.geolocation.getCurrentPosition(onsuccess, onerror, params);
+        }, false);
+        document.addEventListener("deviceready", function () {
+            var positionOptions = {
+                enableHighAccuracy: true,
+                maximumAge: 0
             }
-        }
+            navigator.geolocation.getCurrentPosition(function (position) { }, function (error) { }, positionOptions);
+        }, false);
         document.addEventListener("backbutton", backButtonDown, false);
         function backButtonDown() {
             e.preventDefault();

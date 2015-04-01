@@ -21,10 +21,10 @@ function isVerplicht() {
             isLocatieVerplicht = data.verplicht;
             loadData();
             getLocatie();
-            /*if (isLocatieVerplicht == 'false') {
+            if (isLocatieVerplicht == 'false') {
                 $('#containerTime').show();
                 $("#containerLoad").hide();
-            }*/
+            }
         },
         error: function (e) {
             melding("De data is niet opgehaald, gelieve de pagina te herladen.");
