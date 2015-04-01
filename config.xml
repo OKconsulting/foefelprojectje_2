@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget id="com.okc.time.e-ok" version="1.1.3" versionCode="287" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.okc.time.e-ok" version="1.1.3" versionCode="287" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Time.e-ok</name>
   <description>
     Time.e-ok is nu beschikbaar op uw toestel! Met de applicatie kan je de werktijden loggen en raadplegen net zoals op de website www.time.e-ok.be!
@@ -42,10 +42,8 @@
   <preference name="DisallowOverscroll" value="true" />
   <preference name="permissions" value="none" />
 
-  <feature name="Device">
-    <param name="ios-package" value="org.apache.cordova.geolocation" />
-  </feature>
-  <plugin name="org.apache.cordova.geolocation" />
+  <gap:plugin name="org.apache.cordova.geolocation" />
+  <!--<plugin name="org.apache.cordova.geolocation" />-->
   <plugin name="com.phonegap.plugin.statusbar" />
 
   <config-file platform="ios" parent="UIStatusBarHidden">
