@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="themes/stijl.css" />
     <link href="themes/jquery.mobile-1.4.3.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="themes/tijdsregistratie.css" />
+    <script src="cordova.js"></script>
     <script src="scripts/jquery-1.10.2.min.js"></script>
     <script src="scripts/jquery.mobile-1.4.3.min.js"></script>
 </head>
@@ -34,7 +35,7 @@
     </div>
 
     <script src="scripts/database-connection.js"></script>
-    <script src="cordova.js"></script>
+    
     <script>
         var APIVersion = '2';
 
@@ -42,17 +43,11 @@
         function getLocatie() {
             if (navigator.geolocation) {
                 var geoSuccessHandler = function (position) {
-                    latitudeLongitude = position.coords.latitude + ";" + position.coords.longitude;
-                    $('#containerTime').show();
-                    $("#containerLoad").hide();
+                    melding("U bevindt zich in de successhandler");
                 };
 
                 var geoErrorHandler = function (error) {
-                    opmerkingLocatie = "de medewerker heeft geweigert zijn geolocatie mee te geven";
-                    if (isLocatieVerplicht != 'false') {
-                        melding("U heeft gewijgerd de locatie mee te geven. <br> Gelieve de handleiding te raadplegen over hoe u dit kunt toelaten.");
-                    };
-                    $("#containerLoad").hide();
+                    melding("U bevindt zich in de errorhandler.");
                 };
 
                 var positionOptions = {
