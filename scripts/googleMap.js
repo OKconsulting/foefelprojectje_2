@@ -13,8 +13,8 @@ function initialize() {
     }
 }
 
-var mapHeight = document.documentElement.clientHeight /*$(document).height()*/ / 100 * 75;
+var mapHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0); // $(document).height() / 100 * 75;
 $('#myGoogleMap').css('height', mapHeight + 'px');
 
-var mapWidth = document.documentElement.clientWidth /*$(document).width()*/ / 100 * 75;
+var mapWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0); // $(document).width() / 100 * 75;
 $('#myGoogleMap').css('width', mapWidth + 'px');
