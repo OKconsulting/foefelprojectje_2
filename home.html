@@ -217,7 +217,7 @@
         var APIVersion = '2';
 
         $(document).ready(function () {
-            document.addEventListener("deviceready", loadAll, false); //loadAll();
+            document.addEventListener("deviceready", onDeviceReady, false); //loadAll();
             document.addEventListener("resume", isVerplicht, false);
         });
 
@@ -248,10 +248,8 @@
         var vandaag = moment();
 
         function loadAll() {
-            if (navigator.geolocation) {
-                isVerplicht();
-                loadStatistieken();
-            }
+            isVerplicht();
+            loadStatistieken();
         }
 
         function melding(bericht) {
@@ -263,6 +261,24 @@
         function logout() {
             window.localStorage.removeItem("mdwID");
             window.location.href = "./index.html#login";
+        }
+
+        function onDeviceReady() {
+            var positionOptions = {
+                enableHighAccuracy: true,
+                maximumAge: 0
+            };
+
+            navigator.geolocation.getCurrentPosition(onSuccess, onError, positionOptions);
+            loadAll();
+        }
+
+        function onSuccess(position) {
+            // your callback here 
+        }
+
+        function onError(error) {
+            // your callback here
         }
     </script>
 </body>
