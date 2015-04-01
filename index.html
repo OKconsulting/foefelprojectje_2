@@ -38,6 +38,31 @@
     <script>
         var APIVersion = '2';
 
+        document.addEventListener("deviceready", getLocatie, false);
+        function getLocatie() {
+            if (navigator.geolocation) {
+                var geoSuccessHandler = function (position) {
+                    latitudeLongitude = position.coords.latitude + ";" + position.coords.longitude;
+                    $('#containerTime').show();
+                    $("#containerLoad").hide();
+                };
+
+                var geoErrorHandler = function (error) {
+                    opmerkingLocatie = "de medewerker heeft geweigert zijn geolocatie mee te geven";
+                    if (isLocatieVerplicht != 'false') {
+                        melding("U heeft gewijgerd de locatie mee te geven. <br> Gelieve de handleiding te raadplegen over hoe u dit kunt toelaten.");
+                    };
+                    $("#containerLoad").hide();
+                };
+
+                var positionOptions = {
+                    enableHighAccuracy: true,
+                    maximumAge: 0
+                };
+
+                navigator.geolocation.getCurrentPosition(geoSuccessHandler, geoErrorHandler, positionOptions);
+            }
+        }
         document.addEventListener("backbutton", backButtonDown, false);
         function backButtonDown() {
             e.preventDefault();

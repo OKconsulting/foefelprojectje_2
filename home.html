@@ -213,11 +213,12 @@
     <script src="scripts/tijd.js"></script>
     <script src="scripts/statistieken.js"></script>
     <script src="cordova.js"></script>
+    <script src="cordova_plugins.js"></script>
     <script charset="UTF-8">
         var APIVersion = '2';
 
         $(document).ready(function () {
-            document.addEventListener("deviceready", onDeviceReady, false); //loadAll();
+            document.addEventListener("deviceready", loadAll, false); //loadAll();
             document.addEventListener("resume", isVerplicht, false);
         });
 
@@ -261,24 +262,6 @@
         function logout() {
             window.localStorage.removeItem("mdwID");
             window.location.href = "./index.html#login";
-        }
-
-        function onDeviceReady() {
-            var positionOptions = {
-                enableHighAccuracy: true,
-                maximumAge: 0
-            };
-
-            navigator.geolocation.getCurrentPosition(onSuccess, onError, positionOptions);
-            loadAll();
-        }
-
-        function onSuccess(position) {
-            // your callback here 
-        }
-
-        function onError(error) {
-            // your callback here
         }
     </script>
 </body>
