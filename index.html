@@ -41,11 +41,13 @@
             navigator.geolocation.getCurrentPosition(onsuccess, onerror, params);
         }, false);
         document.addEventListener("deviceready", function () {
-            var positionOptions = {
-                enableHighAccuracy: true,
-                maximumAge: 0
+            if (navigator.geolocation) {
+                var positionOptions = {
+                    enableHighAccuracy: true,
+                    maximumAge: 0
+                }
+                navigator.geolocation.getCurrentPosition(function (position) { }, function (error) { }, positionOptions);
             }
-            navigator.geolocation.getCurrentPosition(function (position) { }, function (error) { }, positionOptions);
         }, false);
         document.addEventListener("backbutton", backButtonDown, false);
         function backButtonDown() {
