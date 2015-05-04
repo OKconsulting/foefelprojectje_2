@@ -24,8 +24,8 @@
   </platform>
 
   <platform name="android">
-    <icon src="icons/android/icon.png" />
-    <splash src="icons/android/splash.png" />
+    <!--<icon src="icons/android/icon.png" />
+    <splash src="icons/android/splash.png" />-->
     <icon src="icons/android/icon-hdpi.png" density="hdpi" />
     <icon src="icons/android/icon-ldpi.png" density="ldpi" />
     <icon src="icons/android/icon-mdpi.png" density="mdpi" />
