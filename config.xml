@@ -14,7 +14,7 @@
   <access origin="*" />
   
   <!-- Android -->
-  <!--<icon src="icons/android/icon.png" />-->
+  <icon src="icons/android/icon.png" />
   
   <!--ios-->
   <!--<icon src="icons/ios/icon.png" platform="ios" width="57" height="57" />
