@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget id="com.okc.time.e-ok" version="1.1.4" versionCode="287" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.okc.time.e-ok" version="1.1.5" versionCode="287" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <!-- Android id="com.okc.time" -->
   <!-- ios id="com.okc.time.e-ok" -->
   <name>Time.e-ok</name>
