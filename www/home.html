@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <title>Time.e-ok</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/stijl.css" />
+		<link href="css/jquery.mobile-1.4.3.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/tijdsregistratie.css" />
+		<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="js/jquery.mobile-1.4.3.min.js"></script>
+
+		<link rel="stylesheet" href="css/jquery.mobile.datepicker.css" />
+		<script src="js/jquery.mobile.datepicker.js"></script>
+
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDQlGfx1xy-4iELx4sSB759T-ESWARO39Y&sensor=false&libraries=places&language=en"></script>
+		<script src="js/googleMap.js"></script>
+		<script src="js/database-connection.js"></script>
+		<script src="js/jquery-ui-1.10.4.custom.js"></script>
+		<script src="js/moment.js"></script>
+		<script src="js/jquery.inputmask.js"></script>
+		<script src="js/tijd.js"></script>
+		<script src="js/statistieken.js"></script>
+    </head>
+    <body class="ui-mobile-viewport ui-overlay-c" id="containerPagina">
+        <div data-role="page" id="home" data-theme="b">
+			<div data-role="header" class="header" data-position="fixed">
+				<div class="left"><a href="#home_panel"><img src="img/menu.png" /></a></div>
+				<div class="right"><a href="#selecteerPeriode" data-role="none" data-rel="popup" data-position-to="window" onclick="loadAll();"><img src="img/herladen.png" /></a></div>
+				<div class="center"><h1><a href="#home">Time.e-ok</a></h1></div>
+			</div>
+
+			<div data-role="content" class="ui-content" role="main">
+				<div class="melding">
+				</div>
+				<div class="time">
+					<div id="containerLoad">
+						<img src="img/load.gif" alt="" />
+					</div>
+					<div id="containerTime">
+						<div id="containerStart">
+							<form>
+								<input type="button" value="Start" class="knop start" onclick="post('START', 'start')" />
+								<textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
+								<p>Je dient nog te werken:</p>
+								<p id="tijdTeWerkenStart">00:00:00</p>
+							</form>
+						</div>
+
+						<div id="containerStop">
+							<form>
+								<p>U heeft vandaag al gewerkt voor</p>
+								<p id="tijdAanHetWerk">00:00:00</p>
+								<div id="progressbar"><div id='progressbarLabel'>00:00:00</div></div>
+								<input type="button" value="Stop" class="knop stop" onclick="post('STOP', 'stop')" />
+								<textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
+								<p>Je dient nog te werken:</p>
+								<p id="tijdTeWerkenStop">00:00:00</p>
+							</form>
+						</div>
+
+						<div id="containerVergeten">
+							<form>
+								<p></p>
+								<input type="text" class="tijd2 textbox-small" id="vergeten" data-role="none" /><br />
+								<input type="button" value="Stop op ingevulde uur" class="knop stop" onclick="post('STOP', 'stopVergeten')" />
+								<textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
+							</form>
+						</div>
+
+						<div id="containerKeuze">
+							<form>
+								<p></p>
+								<a onclick="popup('vergeten');">
+									<input type="button" value="Ik ben het vergeten" class="knop stop" />
+								</a>
+								<a onclick="popup('doorgewerkt');">
+									<input type="button" value="Ik heb doorgewerkt" class="knop stop" />
+								</a>
+							</form>
+						</div>
+
+						<div id="containerKeuzeVergeten">
+							<form>
+								<p></p>
+								<input type="text" class="tijd2 textbox-small" id="vergetenKeuze" data-role="none" /><br />
+								<input type="button" value="Stop op ingevulde uur" class="knop stop" onclick="post('STOP', 'stopKeuzeVergeten')" />
+								<textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
+							</form>
+						</div>
+
+						<div id="containerKeuzeDoorgewerkt">
+							<form>
+								<p>Gelieve te bevestigen dat u doorgewerkt hebt deze nacht.</p>
+								<input type="button" value="Ik heb doorgewerkt" class="knop stop" onclick="post('STOP', 'stopKeuzeWerkend')" />
+								<textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div data-role="panel" id="home_panel" data-position="left" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-left ui-panel-display-reveal ui-body-b ui-panel-animate ui-panel-open">
+				<div class="ui-panel-inner">
+					<a href="#home" data-transition="none" data-rel="close" class='home_hide_panel' style='display:none;'></a>
+					<ul class="menu">
+						<li><a href="#home" data-rel="close" data-transition="none"><img src="img/home.png" /><span>Home</span><div class="clear-fix"></div></a></li>
+						<li><a href="#statistieken" data-rel="close" data-transition="none"><img src="img/statistieken.png" /><span>Statistieken</span><div class="clear-fix"></div></a></li>
+						<li><a href="#About" data-rel="close" data-transition="none"><img src="img/About.png" /><span>OKc</span><div class="clear-fix"></div></a></li>
+						<li><a onclick="logout()"><img src="img/logout.png" /><span>Logout</span><div class="clear-fix"></div></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div data-role="page" id="statistieken" data-theme="b">
+			<div data-role="header" class="header" data-position="fixed">
+				<div class="left"><a href="#statistieken_panel" data-transition="none"><img src="img/menu.png" /></a></div>
+				<div class="right"><a href="#selecteerPeriode" data-role="none" data-rel="popup" data-position-to="window"><img src="img/kalender.png" /></a></div>
+				<div class="center"><h1><a href="#home">Time.e-ok</a></h1></div>
+			</div>
+
+			<div data-role="popup" id="selecteerPeriode" class="ui-content" data-theme="a">
+				<div style="text-align:center;">Selecteer van welke maand je de statistieken wilt opvragen.</div>
+				<input type="text" id="date-input" data-inline="true" data-role="date" style="display:none;">
+				<a data-rel="back" class="ui-btn" onclick="loadStatistieken();">Bevestig</a>
+			</div>
+
+			<div data-role="content" class="ui-content" role="main">
+				<div class="melding">
+				</div>
+				<table class="tabel_uren" id="tabelStatistieken">
+					<tbody>
+						<tr>
+							<th>
+								Datum
+							</th>
+							<th>
+								Te doen
+							</th>
+							<th>
+								Gedaan
+							</th>
+						</tr>
+					</tbody>
+					<tbody></tbody>
+				</table>
+				<div id="load-statistieken">
+                    <img src="img/load.gif" alt="" />
+				</div>
+				<a href="http://time.e-ok.be/">
+					<div id="legende">
+						De kleurencodes kunnen nagekeken worden op de website.
+					</div>
+				</a>
+			</div>
+
+			<div data-role="panel" id="statistieken_panel" data-position="left" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-left ui-panel-display-reveal ui-body-b ui-panel-animate ui-panel-open">
+				<div class="ui-panel-inner">
+					<a href="#home" data-transition="none" data-rel="close" class='statistieken_hide_panel' style='display:none;'></a>
+					<ul class="menu">
+						<li><a href="#home" data-rel="close" data-transition="none"><img src="img/home.png" /><span>Home</span><div class="clear-fix"></div></a></li>
+						<li><a href="#statistieken" data-rel="close" data-transition="none"><img src="img/statistieken.png" /><span>Statistieken</span><div class="clear-fix"></div></a></li>
+						<li><a href="#About" data-rel="close" data-transition="none"><img src="img/About.png" /><span>OKc</span><div class="clear-fix"></div></a></li>
+						<li><a onclick="logout()"><img src="img/logout.png" /><span>Logout</span><div class="clear-fix"></div></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div data-role="page" id="About" data-theme="b">
+			<div data-role="header" class="header" data-position="fixed">
+				<div class="left"><a href="#about_panel"><img src="img/menu.png" /></a></div>
+				<div class="right"><a href="#Toon-map" data-role="none" data-rel="popup" data-position-to="window" onclick="initialize()"><img src="img/map.png" /></a></div>
+				<div class="center"><h1><a href="#home">Time.e-ok</a></h1></div>
+			</div>
+
+			<div data-role="popup" id="Toon-map" class="ui-content" data-theme="a">
+				<div id="myGoogleMap" style="width: 350px; height: 550px;">
+				</div>
+			</div>
+
+			<div data-role="content" class="ui-content" role="main">
+				<div id="contactGeg">
+					<p>OKc bvba</p>
+					<p>Accent Business Park</p>
+					<p>Kwadestraat 149</p>
+					<p>B-8800 Roeselare</p>
+					<p>België</p>
+					<p>contact@okc.be</p>
+					<p>www.okc.be</p>
+				</div>
+				<div id="abPageFooter">
+                    <img src="img/logo-okc.png" />
+				</div>
+			</div>
+
+			<div data-role="panel" id="about_panel" data-position="left" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-left ui-panel-display-reveal ui-body-b ui-panel-animate ui-panel-open">
+				<div class="ui-panel-inner">
+					<a href="#home" data-transition="none" data-rel="close" class='about_hide_panel' style='display:none;'></a>
+					<ul class="menu">
+						<li><a href="#home" data-rel="close" data-transition="none"><img src="img/home.png" /><span>Home</span><div class="clear-fix"></div></a></li>
+						<li><a href="#statistieken" data-rel="close" data-transition="none"><img src="img/statistieken.png" /><span>Statistieken</span><div class="clear-fix"></div></a></li>
+						<li><a href="#About" data-rel="close" data-transition="none"><img src="img/About.png" /><span>OKc</span><div class="clear-fix"></div></a></li>
+						<li><a onclick="logout()"><img src="img/logout.png" /><span>Logout</span><div class="clear-fix"></div></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/Home.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+		<script charset="UTF-8">
+			var APIVersion = '2';
+
+			//$(document).ready(loadAll());
+
+			$(document).on('pagebeforeshow', '#About', function () {
+				var deviceWidth = document.documentElement.clientWidth - 16;
+				$('#abPageFooter').css('width', deviceWidth);
+			});
+
+			var mdwID = window.localStorage.getItem("mdwID");
+			//home
+			var tijdLogs;
+			var latitudeLongitude = "", commentaar = "", opmerking = "", opmerkingLocatie = "", opmerkingHR = "", nacht = false;
+			var tijdAanHetWerk = moment(0);
+			moment.lang('nl');
+
+			$('.tijd2').inputmask('99u99');
+
+			//statistieken
+			var tijdPerDag;
+			var table = document.getElementById("tabelStatistieken");
+			var rijNummer = 1;
+			var vandaag = moment();
+
+			function loadAll() {
+				isVerplicht();
+				loadStatistieken();
+			}
+
+			function melding(bericht) {
+				$('.melding').html(bericht);
+				$('.melding').fadeIn();
+				setTimeout(function () { $('.melding').fadeOut(); }, 3000);
+			}
+
+			function logout() {
+				window.localStorage.removeItem("mdwID");
+				window.location.href = "./index.html#login";
+			}
+		</script>
+    </body>
+</html>

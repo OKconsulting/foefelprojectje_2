@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <title>Time.e-ok</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/stijl.css" />
+		<link href="css/jquery.mobile-1.4.3.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/tijdsregistratie.css" />
+		<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="js/jquery.mobile-1.4.3.min.js"></script>
+		<script src="js/database-connection.js"></script>
+    </head>
+    <body class="ui-mobile-viewport ui-overlay-c">
+        <div data-role="page" id="login" data-theme="a">
+			<div data-role="content" class="ui-content" role="main">
+				<div class="melding" onclick="hideMelding()">
+				</div>
+				<div class="headerLogo">
+					<img src="img/time.e-ok_Logo.png" width="57" height="57" />
+				</div>
+				<div id="containerLogin">
+					<input type="email" id="loginInput" placeholder="Login" />
+					<input type="password" id="paswoordInput" placeholder="Paswoord" />
+					<input type="button" id="inloggen" value="Inloggen" data-role="button" />
+				</div>
+				<div id="containerLoading">
+					<img src="img/gif-load.gif" />
+				</div>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<img src="img/logo-okc.png" />
+			</div>
+		</div>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+        <script>
+            var APIVersion = '2';
+
+            function deviceReady() {
+                if (navigator.geolocation) {
+                    var geoSuccessHandler = function (position) { };
+
+                    var geoErrorHandler = function (error) { };
+
+                    var positionOptions = {
+                        enableHighAccuracy: true,
+                        maximumAge: 0
+                    }
+                    navigator.geolocation.getCurrentPosition(geoSuccessHandler, geoErrorHandler, positionOptions);
+                }
+            }
+
+            var timeout;
+            $(document).ready(function () {
+                var mdwID = window.localStorage.getItem("mdwID");
+
+                if (mdwID != null) {
+                    $.ajax({
+                        headers: { 'Access-Control-Allow-Origin': "*" },
+                        url: url + 'api/User/getVersionInfo/?apiVersion=' + APIVersion,
+                        cache: false,
+                        type: 'GET',
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            window.localStorage.setItem("mdwID", mdwID);
+                            window.location.href = "./home.html#home";
+                        },
+                        error: function (e) {
+                            if (e.responseJSON == undefined || e.responseJSON == null)
+                                melding("U heeft geen internet connectie.", 3000, 'error');
+                            else
+                                melding(e.responseJSON, 3000, 'error');
+                        }
+                    });
+                }
+            });
+
+            $("#inloggen").on('click', function () {
+                $('#containerLogin').css('display', 'none');
+                $('#containerLoading').css('display', 'block');
+                login();
+            });
+
+            $('#loginInput, #paswoordInput').focus(function () {
+                $('[data-role=footer]').css("display", "none");
+            });
+
+            function melding(bericht, fadeDelay, status) {
+                switch (status) {
+                    case "error":
+                        $('.melding').css('background-color', '#ff5757');
+                        break;
+                    case "warning":
+                        $('.melding').css('background-color', '#ffdd57');
+                        break;
+                    case "success":
+                        $('.melding').css('background-color', '#57dd57');
+                        break;
+                }
+                $('.melding').text(bericht);
+                $('.melding').fadeIn();
+                window.clearTimeout(timeout);
+                timeout = setTimeout(function () { $('.melding').fadeOut(); }, fadeDelay);
+            }
+
+            function hideMelding() {
+                clearTimeout(timeout);
+                $('.melding').fadeOut();
+            }
+
+            function login() {
+                console.log('login');
+                var user = { UserName: $("#loginInput").val(), Paswoord: $("#paswoordInput").val(), MedewerkerID: 0, Role: "" };
+
+                $.ajax({
+                    url: url + 'api/user/login/?apiVersion=' + APIVersion,
+                    type: 'POST',
+                    async: false,
+                    contentType: 'application/json',
+                    data: JSON.stringify(user),
+                    success: function (data) {
+                        window.localStorage.setItem("mdwID", data.MedewerkerID);
+                        window.location.href = "./home.html#home";
+                    },
+                    error: function (e) {
+                        $('#containerLogin').css('display', 'block');
+                        $('#containerLoading').css('display', 'none');
+
+                        if (e.responseJSON == undefined || e.responseJSON == null)
+                            melding("U heeft geen internet connectie.", 3000, 'error');
+                        else {
+                            if (e.responseJSON == "login") {
+                                melding("Deze login heeft geen toegang tot de applicatie.", 3000, 'error');
+                            } else if (e.responseJSON == "wachtwoord") {
+                                melding("U heeft een verkeerd wachtwoord ingevoerd.", 3000, 'error');
+                            } else if (e.responseJSON = "versie") {
+                                melding("Gelieve de nieuwste versie van de app te installeren. Deze is gratis beschikbaar in de app store.", 3000, 'error');
+                            } else if (e.responseJSON = "orgInactief") {
+                                melding("Uw toegang is niet langer actief. Contacteer de HR-verantwoordelijk van uw organisatie!", 3000, 'error');
+                            } else {
+                                melding(e.responseJSON, 3000, 'error');
+                            }
+                        }
+                    },
+                    dataType: 'json',
+                    contentType: "application/json"
+                });
+            }
+        </script>
+    </body>
+</html>
