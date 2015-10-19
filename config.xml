@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.okc.time.e_ok" version="1.1.5">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.okc.time.e_ok" version="1.1.6">
   <name>time.e-ok</name>
   <description>
 	Time.e-ok is nu beschikbaar op uw toestel! Met de applicatie kan je de werktijden loggen en raadplegen net zoals op de website www.time.e-ok.be!</description>
@@ -22,25 +22,25 @@
   <preference name="android-installLocation" value="auto"/>
   <preference name="DisallowOverscroll" value="true" />  
   
-  <gap:plugin name="org.apache.cordova.battery-status"/>
-  <gap:plugin name="org.apache.cordova.camera"/>
-  <gap:plugin name="org.apache.cordova.media-capture"/>
-  <gap:plugin name="org.apache.cordova.console"/>
-  <gap:plugin name="org.apache.cordova.contacts"/>
-  <gap:plugin name="org.apache.cordova.device"/>
-  <gap:plugin name="org.apache.cordova.device-motion"/>
-  <gap:plugin name="org.apache.cordova.device-orientation"/>
-  <gap:plugin name="org.apache.cordova.dialogs"/>
-  <gap:plugin name="org.apache.cordova.file"/>
-  <gap:plugin name="org.apache.cordova.file-transfer"/>
-  <gap:plugin name="org.apache.cordova.geolocation"/>
-  <gap:plugin name="org.apache.cordova.globalization"/>
-  <gap:plugin name="org.apache.cordova.inappbrowser"/>
-  <gap:plugin name="org.apache.cordova.media"/>
-  <gap:plugin name="org.apache.cordova.network-information"/>
-  <gap:plugin name="org.apache.cordova.splashscreen"/>
-  <gap:plugin name="org.apache.cordova.vibration"/>
-  <gap:plugin name="com.phonegap.plugin.statusbar" />
+  <gap:plugin name="org.apache.cordova.battery-status" source="npm"/>
+  <gap:plugin name="org.apache.cordova.camera" source="npm"/>
+  <gap:plugin name="org.apache.cordova.media-capture" source="npm"/>
+  <gap:plugin name="org.apache.cordova.console" source="npm"/>
+  <gap:plugin name="org.apache.cordova.contacts" source="npm"/>
+  <gap:plugin name="org.apache.cordova.device" source="npm"/>
+  <gap:plugin name="org.apache.cordova.device-motion" source="npm"/>
+  <gap:plugin name="org.apache.cordova.device-orientation" source="npm"/>
+  <gap:plugin name="org.apache.cordova.dialogs" source="npm"/>
+  <gap:plugin name="org.apache.cordova.file" source="npm"/>
+  <gap:plugin name="org.apache.cordova.file-transfer" source="npm"/>
+  <gap:plugin name="org.apache.cordova.geolocation" source="npm"/>
+  <gap:plugin name="org.apache.cordova.globalization" source="npm"/>
+  <gap:plugin name="org.apache.cordova.inappbrowser" source="npm"/>
+  <gap:plugin name="org.apache.cordova.media" source="npm"/>
+  <gap:plugin name="org.apache.cordova.network-information" source="npm"/>
+  <gap:plugin name="org.apache.cordova.splashscreen" source="npm"/>
+  <gap:plugin name="org.apache.cordova.vibration" source="npm"/>
+  <gap:plugin name="com.phonegap.plugin.statusbar" source="npm"/>
   
   <icon src="icon.png"/>
   <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
