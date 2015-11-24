@@ -11,3 +11,16 @@ C:\Users\user\Documents\GitHub\time.e-okNew\platforms\wp8\obj\Debug\com.okc.time
 C:\Users\user\Documents\GitHub\time.e-okNew\platforms\wp8\obj\Debug\com.okc.time.e_ok.dll
 C:\Users\user\Documents\GitHub\time.e-okNew\platforms\wp8\obj\Debug\com.okc.time.e_ok.pdb
 C:\Users\user\Documents\GitHub\time.e-okNew\platforms\wp8\obj\Debug\XapCacheFile.xml
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\Bin\Debug\ApplicationIcon.png
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\Bin\Debug\Background.png
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\Bin\Debug\com.okc.time.e_ok.dll
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\Bin\Debug\com.okc.time.e_ok.pdb
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\Bin\Debug\AppManifest.xaml
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\Bin\Debug\CordovaAppProj_Debug_AnyCPU.xap
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\obj\Debug\App.g.cs
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\obj\Debug\cordovalib\CordovaView.g.cs
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\obj\Debug\MainPage.g.cs
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\obj\Debug\com.okc.time.e_ok.g.resources
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\obj\Debug\com.okc.time.e_ok.dll
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\obj\Debug\com.okc.time.e_ok.pdb
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\obj\Debug\XapCacheFile.xml

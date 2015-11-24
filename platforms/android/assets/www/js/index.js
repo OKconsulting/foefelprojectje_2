@@ -20,11 +20,11 @@ var app = {
     initialize: function() {
         this.bindEvents();
     },
-    bindEvents: function() {
+    bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener("backbutton", this.backButtonDown, false);
     },
-    onDeviceReady: function() {
+    onDeviceReady: function () {
         deviceReady();
     },
     backButtonDown: function(){
