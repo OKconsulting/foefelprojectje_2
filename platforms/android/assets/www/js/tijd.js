@@ -263,7 +263,8 @@ function getLocatie() {
 
         var positionOptions = {
             enableHighAccuracy: true,
-            maximumAge: 0
+            maximumAge: 0,
+            timeout: 100
         };
 
         navigator.geolocation.getCurrentPosition(geoSuccessHandler, geoErrorHandler, positionOptions);

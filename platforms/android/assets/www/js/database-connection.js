@@ -2,11 +2,11 @@
 var url;
 
 if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
-    url = "https://time.e-ok.be/";
+    url = "http://192.168.2.125:58206/";
 } else {
-    url = "https://time.e-ok.be/";
+    url = "http://192.168.2.125:58206/";
 }
-// https://time.e-ok.be/             // Live
+// https://time.e-ok.be/            // Live
 // http://localhost:58206/          // Lokaal
 // http://trs.e-ok.be/              // Test
 // http://192.168.2.125:58206/      // Device
