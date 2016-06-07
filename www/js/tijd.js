@@ -77,7 +77,6 @@ function bepaalSituatie() {
     //de eerste value in de array van tijdlogs zal het tijdstip van gisteren zijn indien vergeten of het tijdstip van vandaag als het niet vergeten is
     vandaag = moment();
     var tijdAanHetWerk = moment(0);
-    $("#containerLoad").hide();
 
     if (tijdLogs.length == 0) {
         $('#start').fadeIn();
@@ -259,12 +258,13 @@ function getLocatie() {
                 melding("U heeft gewijgerd de locatie mee te geven. <br> Gelieve de handleiding te raadplegen over hoe u dit kunt toelaten.");
             };
             $("#containerLoad").hide();
+            //melding(error.code + ' - ' + error.message);
         };
 
         var positionOptions = {
-            enableHighAccuracy: true,
+            enableHighAccuracy: false,
             maximumAge: 0,
-            timeout: 100
+            timeout: 60000
         };
 
         navigator.geolocation.getCurrentPosition(geoSuccessHandler, geoErrorHandler, positionOptions);
