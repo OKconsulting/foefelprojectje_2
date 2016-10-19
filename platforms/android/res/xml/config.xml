@@ -1,40 +1,21 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.okc.time.e_ok" version="1.2.2" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <preference name="loglevel" value="DEBUG" />
-    <allow-intent href="market:*" />
     <name>time.e-ok</name>
     <description>
 	Time.e-ok is nu beschikbaar op uw toestel! Met de applicatie kan je de werktijden loggen en raadplegen net zoals op de website www.time.e-ok.be!</description>
-    <author email="morten.minne@okc.be">morten.minne@okc.be</author>
+    <author email="morten.minne@okc.be">OKc</author>
     <content src="index.html" />
-    <preference name="permissions" value="none" />
-    <preference name="orientation" value="portrait" />
-    <preference name="target-device" value="universal" />
-    <preference name="fullscreen" value="true" />
-    <preference name="webviewbounce" value="true" />
-    <preference name="prerendered-icon" value="true" />
-    <preference name="stay-in-webview" value="false" />
-    <preference name="ios-statusbarstyle" value="black-opaque" />
-    <preference name="detect-data-types" value="true" />
-    <preference name="exit-on-suspend" value="false" />
-    <preference name="show-splash-screen-spinner" value="true" />
-    <preference name="auto-hide-splash-screen" value="true" />
-    <preference name="disable-cursor" value="false" />
-    <preference name="android-minSdkVersion" value="14" />
-    <preference name="android-installLocation" value="auto" />
-    <preference name="DisallowOverscroll" value="true" />
-    <preference name="SplashScreenDelay" value="10000" />
-    <gap:plugin name="org.apache.cordova.console" />
-    <gap:plugin name="org.apache.cordova.device" />
-    <gap:plugin name="org.apache.cordova.dialogs" />
-    <gap:plugin name="org.apache.cordova.globalization" />
+    <gap:plugin name="org.apache.cordova.console" source="npm" />
+    <gap:plugin name="org.apache.cordova.device" source="npm" />
+    <gap:plugin name="org.apache.cordova.dialogs" source="npm" />
+    <gap:plugin name="org.apache.cordova.globalization" source="npm" />
     <gap:plugin name="org.apache.cordova.inappbrowser" source="npm" />
-    <gap:plugin name="org.apache.cordova.network-information" />
-    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <gap:plugin name="org.apache.cordova.splashscreen" source="npm" />
     <gap:plugin name="com.phonegap.plugin.statusbar" />
-    <gap:plugin name="org.apache.cordova.geolocation" />
+    <gap:plugin name="org.apache.cordova.geolocation" source="npm" />
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
-    <icon src="icon.png" />
+    <gap:plugin name="cordova-plugin-network-information" source="npm" />
+    <icon src="www/icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />
     <icon gap:platform="android" gap:qualifier="hdpi" src="www/res/icon/android/icon-72-hdpi.png" />
@@ -74,4 +55,25 @@
     <config-file parent="UIViewControllerBasedStatusBarAppearance" platform="ios">
         <false />
     </config-file>
+    <allow-intent href="market:*" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="permissions" value="none" />
+    <preference name="orientation" value="portrait" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="true" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="show-splash-screen-spinner" value="true" />
+    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="disable-cursor" value="false" />
+    <preference name="android-minSdkVersion" value="14" />
+    <preference name="android-installLocation" value="auto" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="SplashScreenDelay" value="10000" />
+    <preference name="windows-appx-target" value="8.1-phone" />
+    <preference name="windows-identity-name" value="12065OKc.My.e-ok" />
 </widget>
