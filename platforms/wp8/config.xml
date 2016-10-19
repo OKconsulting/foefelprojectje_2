@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.okc.time.e_ok" version="1.2.2" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.okc.time.e_ok" version="1.3.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>time.e-ok</name>
     <description>
 	Time.e-ok is nu beschikbaar op uw toestel! Met de applicatie kan je de werktijden loggen en raadplegen net zoals op de website www.time.e-ok.be!</description>
@@ -73,5 +73,5 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="SplashScreenDelay" value="10000" />
     <preference name="windows-appx-target" value="8.1-phone" />
-    <preference name="windows-identity-name" value="12065OKc.My.e-ok" />
+    <preference name="windows-identity-name" value="12065OKc.Time.e-ok" />
 </widget>

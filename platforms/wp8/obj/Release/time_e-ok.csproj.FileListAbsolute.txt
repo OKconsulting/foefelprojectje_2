@@ -1,0 +1,13 @@
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\Bin\Release\ApplicationIcon.png
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\Bin\Release\Background.png
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\Bin\Release\com.okc.time.e_ok.dll
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\Bin\Release\com.okc.time.e_ok.pdb
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\Bin\Release\AppManifest.xaml
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\Bin\Release\CordovaAppProj_Release_AnyCPU.xap
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\obj\Release\App.g.cs
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\obj\Release\cordovalib\CordovaView.g.cs
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\obj\Release\MainPage.g.cs
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\obj\Release\com.okc.time.e_ok.g.resources
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\obj\Release\com.okc.time.e_ok.dll
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\obj\Release\com.okc.time.e_ok.pdb
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\obj\Release\XapCacheFile.xml

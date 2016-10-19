@@ -4,7 +4,7 @@
   <Languages xmlns="">
     <Language code="en-US" />
   </Languages>
-  <App Author="OKc" BitsPerPixel="32" Description="Time.e-ok is nu beschikbaar op uw toestel! Met de applicatie kan je de werktijden loggen en raadplegen net zoals op de website www.time.e-ok.be!" Genre="apps.normal" ProductID="{710d2980-95eb-11e6-aa06-1762d3ec2ffd}" Publisher="OKc" PublisherID="{db093ed5-53b1-45f7-af72-751e8f36ab80}" RuntimeType="Silverlight" Title="time.e-ok" Version="1.3.0" xmlns="">
+  <App Author="OKc" BitsPerPixel="32" Description="Time.e-ok is nu beschikbaar op uw toestel! Met de applicatie kan je de werktijden loggen en raadplegen net zoals op de website www.time.e-ok.be!" Genre="apps.normal" ProductID="{710d2980-95eb-11e6-aa06-1762d3ec2ffd}" Publisher="OKc" PublisherID="{db093ed5-53b1-45f7-af72-751e8f36ab80}" RuntimeType="Silverlight" Title="time.e-ok" Version="1.2.2" xmlns="">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
