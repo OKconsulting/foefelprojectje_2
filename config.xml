@@ -22,6 +22,7 @@
   <preference name="android-installLocation" value="auto"/>
   <preference name="DisallowOverscroll" value="true" />
   <preference name="SplashScreenDelay" value="10000" />
+  <preference name="phonegap-version" value="cli-6.3.0" />
 
   <preference name="windows-appx-target" value="8.1-phone" />
   <preference name="windows-identity-name" value="12065OKc.Time.e-ok" />
@@ -78,7 +79,7 @@
   <gap:splash src="www/res/screen/ios/screen-ipad-portrait.png" gap:platform="ios" width="768" height="1024"/>
   <gap:splash src="www/res/screen/ios/screen-ipad-landscape.png" gap:platform="ios" width="1024" height="768"/>
   <gap:splash src="www/res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone"/>
-  
+
   <access origin="http://127.0.0.1*"/>
   <access origin="http://10.0.2.2*"/>
   <access origin="*"/>
