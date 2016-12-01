@@ -2,9 +2,9 @@
 function initialize() {
     if (!googleMapInit) {
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng('50.919812134690694', '3.1733993769739754'),
+            position: new google.maps.LatLng('51.217119', '3.223773'),
             map: new google.maps.Map(document.getElementById('myGoogleMap'), {
-                center: { lat: 50.919812134690694, lng: 3.1733993769739754 },
+                center: { lat: 51.217119, lng: 3.223773 },
                 zoom: 16
             }),
             title: 'OKc'
