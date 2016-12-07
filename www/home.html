@@ -67,19 +67,19 @@
 							<form>
 								<input type="button" value="Start" class="knop start" onclick="post('START', 'start')" />
 								<textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
-								<p>Je dient nog te werken:</p>
+								<p id="txtNogTeWerkenStart">Je dient nog te werken:</p>
 								<p id="tijdTeWerkenStart">00:00:00</p>
 							</form>
 						</div>
 
 						<div id="containerStop">
 							<form>
-								<p>U heeft vandaag al gewerkt voor</p>
+								<p id="txtAlGewerkt">U heeft vandaag al gewerkt voor</p>
 								<p id="tijdAanHetWerk">00:00:00</p>
 								<div id="progressbar"><div id='progressbarLabel'>00:00:00</div></div>
 								<input type="button" value="Stop" class="knop stop" onclick="post('STOP', 'stop')" />
 								<textarea class="commentaar" placeholder="Heeft u een melding?"></textarea>
-								<p>Je dient nog te werken:</p>
+								<p id="txtNogTeWerkenStop">Je dient nog te werken:</p>
 								<p id="tijdTeWerkenStop">00:00:00</p>
 							</form>
 						</div>

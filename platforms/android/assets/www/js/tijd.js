@@ -57,6 +57,7 @@ function loadData() {
     });
 }
 
+var mdwOrgID = 0;
 function haalRegelOp() {
     $.ajax({
         datatype: 'json',
@@ -65,7 +66,24 @@ function haalRegelOp() {
         success: function (regel) {
             regelMedewerker = regel;
             tijdTeWerken = moment.duration(tijdLogs[0]['commentaar']);
-            bepaalSituatie();
+
+            if (mdwOrgID != 0) {
+                bepaalSituatie();
+            } else {
+                $.ajax({
+                    datatype: 'json',
+                    url: url + "/api/user/getMdwOrgID?mdwid=" + mdwID,
+                    data: null,
+                    success: function (orgID) {
+                        mdwOrgID = orgID;
+                        bepaalSituatie();
+                    },
+                    error: function (e) {
+                        mdwOrgID = orgID;
+                        bepaalSituatie();
+                    }
+                });
+            }
         },
         error: function (e) {
             alert("De data is niet opgehaald, gelieve de pagina te herladen.");
@@ -159,6 +177,16 @@ function bepaalSituatie() {
             $('#containerVergeten').find("p").html("Uw laatste log dateert van <b>" + tijdLogs[0]["tijdstempel"].format("LLLL") + "</b>. <br> Tot hoe laat heeft u gewerkt op deze dag?");
             $('#containerVergeten').fadeIn();
         }
+    }
+
+    if (mdwOrgID == 1099) {
+        $('#txtNogTeWerkenStart').css('display', 'none');
+        $('#tijdTeWerkenStart').css('display', 'none');
+        $('#txtAlGewerkt').css('display', 'none');
+        $('#tijdAanHetWerk').css('display', 'none');
+        $('#progressbar').css('display', 'none');
+        $('#txtNogTeWerkenStop').css('display', 'none');
+        $('#tijdTeWerkenStop').css('display', 'none');
     }
 }
 
