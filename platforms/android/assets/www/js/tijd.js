@@ -113,7 +113,7 @@ function bepaalSituatie() {
                     if (tijdTeWerken <= -3600000)
                         tijdTeWerken = -3600000;
 
-                    $('#tijdTeWerkenStart').text(moment(tijdTeWerken).format("H:mm:ss"));
+-                    $('#tijdTeWerkenStart').text(moment(tijdTeWerken).format("H:mm:ss"));
                     $('#containerStart').fadeIn();
                 } else {
                     $.ajax({
@@ -121,9 +121,12 @@ function bepaalSituatie() {
                         url: url + "/api/TijdLog/GetWerkurenMedewerker/" + mdwID,
                         data: null,
                         success: function (data) {
-                            tijdTeWerken = data * 3600000 - 3600000 - (regelMedewerker * 3600000);
+                            if (data > 0)
+                                tijdTeWerken = data * 3600000 - 3600000 - (regelMedewerker * 3600000);
+                            else
+                                tijdTeWerken = data * 3600000 - 3600000;
 
-                            $('#tijdTeWerkenStart').text(moment(tijdTeWerken).format("H:mm:ss"));
+-                            $('#tijdTeWerkenStart').text(moment(tijdTeWerken).format("H:mm:ss"));
                             $('#containerStart').fadeIn();
                         },
                         error: function (e) {
@@ -195,7 +198,7 @@ function post(type, vergeten) {
     var tijdstempel = moment;
     vandaag = moment();
     commentaar = "", opmerking = "", opmerkingHR = "";
-
+    
     $('.commentaar').each(function () {
         commentaar += $(this).val();
     });

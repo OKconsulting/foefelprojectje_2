@@ -163,10 +163,12 @@
                                 melding("Deze login heeft geen toegang tot de applicatie.", 3000, 'error');
                             } else if (e.responseJSON == "wachtwoord") {
                                 melding("U heeft een verkeerd wachtwoord ingevoerd.", 3000, 'error');
-                            } else if (e.responseJSON = "versie") {
+                            } else if (e.responseJSON == "versie") {
                                 melding("Gelieve de nieuwste versie van de app te installeren. Deze is gratis beschikbaar in de app store.", 3000, 'error');
-                            } else if (e.responseJSON = "orgInactief") {
+                            } else if (e.responseJSON == "orgInactief") {
                                 melding("Uw toegang is niet langer actief. Contacteer de HR-verantwoordelijk van uw organisatie!", 3000, 'error');
+                            } else if (e.responseJSON == "algemeneError") {
+                                melding("Er liep iets fout bij het inloggen. Contacteer de HR-verantwoordelijk van uw organisatie!", 3000, 'error');
                             } else {
                                 melding(e.responseJSON, 3000, 'error');
                             }

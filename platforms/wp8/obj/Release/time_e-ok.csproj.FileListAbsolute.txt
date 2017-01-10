@@ -11,3 +11,4 @@ C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\obj\Release\com.okc.time.
 C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\obj\Release\com.okc.time.e_ok.dll
 C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\obj\Release\com.okc.time.e_ok.pdb
 C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\obj\Release\XapCacheFile.xml
+C:\Users\user\Documents\GitHub\time.e-ok\platforms\wp8\Bin\Release\Properties\WMAppManifest.xml
