@@ -57,7 +57,9 @@ function loadData() {
     });
 }
 
-var mdwOrgID = 0;
+var showProgressBar = 'true';
+var showTeWerken = 'true';
+var showGewerkt = 'true';
 function haalRegelOp() {
     $.ajax({
         datatype: 'json',
@@ -67,23 +69,20 @@ function haalRegelOp() {
             regelMedewerker = regel;
             tijdTeWerken = moment.duration(tijdLogs[0]['commentaar']);
 
-            if (mdwOrgID != 0) {
-                bepaalSituatie();
-            } else {
-                $.ajax({
-                    datatype: 'json',
-                    url: url + "/api/user/getMdwOrgID?mdwid=" + mdwID,
-                    data: null,
-                    success: function (orgID) {
-                        mdwOrgID = orgID;
-                        bepaalSituatie();
-                    },
-                    error: function (e) {
-                        mdwOrgID = orgID;
-                        bepaalSituatie();
-                    }
-                });
-            }
+            $.ajax({
+                datatype: 'json',
+                url: url + "/api/TijdLog/orgCon_counterSettings?mdwid=" + mdwID,
+                data: null,
+                success: function (counterSettings) {
+                    showProgressBar = '' + counterSettings.showProgressBar;
+                    showTeWerken = '' + counterSettings.showTeWerken;
+                    showGewerkt = '' + counterSettings.showGewerkt;
+                    bepaalSituatie();
+                },
+                error: function (e) {
+                    bepaalSituatie();
+                }
+            });
         },
         error: function (e) {
             alert("De data is niet opgehaald, gelieve de pagina te herladen.");
@@ -182,14 +181,19 @@ function bepaalSituatie() {
         }
     }
 
-    if (mdwOrgID == 1099) {
+    if (showProgressBar.toLowerCase() == 'false') {
+        $('#progressbar').css('display', 'none');
+    }
+    if (showTeWerken.toLowerCase() == 'false') {
         $('#txtNogTeWerkenStart').css('display', 'none');
         $('#tijdTeWerkenStart').css('display', 'none');
-        $('#txtAlGewerkt').css('display', 'none');
-        $('#tijdAanHetWerk').css('display', 'none');
-        $('#progressbar').css('display', 'none');
+
         $('#txtNogTeWerkenStop').css('display', 'none');
         $('#tijdTeWerkenStop').css('display', 'none');
+    }
+    if (showGewerkt.toLowerCase() == 'false') {
+        $('#txtAlGewerkt').css('display', 'none');
+        $('#tijdAanHetWerk').css('display', 'none');
     }
 }
 
