@@ -27,7 +27,7 @@
   <preference name="windows-appx-target" value="8.1-phone" />
   <preference name="windows-identity-name" value="12065OKc.Time.e-ok" />
   
-  <gap:plugin name="org.apache.cordova.console" source="npm"/>
+  <!--<gap:plugin name="org.apache.cordova.console" source="npm"/>-->
   <gap:plugin name="org.apache.cordova.device" source="npm"/>
   <gap:plugin name="org.apache.cordova.dialogs" source="npm"/>
   <gap:plugin name="org.apache.cordova.globalization" source="npm"/>
